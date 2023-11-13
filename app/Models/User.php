@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function getGetProfilePicAttribute()
+    {
+        return asset($this->profile_picture);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
