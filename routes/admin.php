@@ -52,6 +52,9 @@ Route::prefix('services')->name('services.')->group(function(){
     Route::get('/{type}',App\Livewire\Backend\Service\Index::class)->name('index');
     Route::get('/add/{type}',App\Livewire\Backend\Service\Add::class)->name('add');
     Route::get('/edit/{id}',App\Livewire\Backend\Service\Edit::class)->name('edit');
+    Route::get('/orders/{type}',App\Livewire\Backend\Service\Orders::class)->name('orders');
+    Route::get('order-details/{id}',App\Livewire\Backend\Service\OrderDetails::class)->name('order.details');
+
 });
 
 // Work Visa
@@ -89,3 +92,21 @@ Route::prefix('holiday-package')->name('holiday.')->group(function(){
     Route::get('orders',App\Livewire\Backend\Holiday\Order::class)->name('orders');
     Route::get('order-details/{id}',App\Livewire\Backend\Holiday\OrderDetails::class)->name('order.details');
 });
+
+// Bank Info
+Route::prefix('bank-info')->name('bank.info.')->group(function(){
+    Route::get('/',App\Livewire\Backend\BankInfo\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\BankInfo\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\BankInfo\Edit::class)->name('edit');
+});
+
+// Balancce Request
+Route::prefix('balance-request')->name('balance.request.')->group(function(){
+    Route::get('/{type?}',App\Livewire\Backend\BalanceRequest\Index::class)->name('index');
+    Route::get('/details/{id}',App\Livewire\Backend\BalanceRequest\Details::class)->name('details');
+});
+
+// Settings
+Route::get('/settings',App\Livewire\Backend\Settings\Index::class)->name('settings');
+Route::post('/setting-store',App\Http\Controllers\Backend\SettingsController::class)->name('settings.store');
+

@@ -2,21 +2,21 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="index.html" class="logo logo-dark">
+        <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ asset('/backend') }}/assets/images/logo-sm.png" alt="" height="22">
+               SZ
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('/backend') }}/assets/images/logo-dark.png" alt="" height="20">
+                <img src="{{ asset('/frontend/assets/images/logo.png') }}" alt="" height="20">
             </span>
         </a>
 
-        <a href="index.html" class="logo logo-light">
+        <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ asset('/backend') }}/assets/images/logo-sm.png" alt="" height="22">
+                SZ
             </span>
             <span class="logo-lg">
-                <img src="{{ asset('/backend') }}/assets/images/logo-light.png" alt="" height="20">
+                <img src="{{ asset('/frontend/assets/images/logo.png') }}" alt="" height="20">
             </span>
         </a>
     </div>
@@ -39,6 +39,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li class="menu-title">Management</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fa fa-video"></i>
@@ -62,6 +63,7 @@
                         <li><a href="{{ route('hajj.index') }}">Hajj List</a></li>
                         <li><a href="{{ route('services.index','hajj_visa') }}">Service List</a></li>
                         <li><a href="{{ route('hajj.orders') }}">Orders</a></li>
+                        <li><a href="{{ route('services.orders','hajj_visa') }}">Service Orders</a></li>
                     </ul>
                 </li>
 
@@ -74,6 +76,8 @@
                         <li><a href="{{ route('work.visa.index') }}">Work Visa List</a></li>
                         <li><a href="{{ route('services.index','work_visa') }}">Service List</a></li>
                         <li><a href="{{ route('work.visa.orders') }}">Orders</a></li>
+                        <li><a href="{{ route('services.orders','work_visa') }}">Service Orders</a></li>
+
                     </ul>
                 </li>
 
@@ -86,6 +90,8 @@
                         <li><a href="{{ route('education.visa.index') }}">Education Visa List</a></li>
                         <li><a href="{{ route('services.index','education_visa') }}">Service List</a></li>
                         <li><a href="{{ route('education.visa.orders') }}">Orders</a></li>
+                        <li><a href="{{ route('services.orders','education_visa') }}">Service Orders</a></li>
+
                     </ul>
                 </li>
 
@@ -98,6 +104,8 @@
                         <li><a href="{{ route('medical.visa.index') }}">Medical Visa List</a></li>
                         <li><a href="{{ route('services.index','medical_visa') }}">Service List</a></li>
                         <li><a href="{{ route('medical.visa.orders') }}">Orders</a></li>
+                        <li><a href="{{ route('services.orders','medical_visa') }}">Service Orders</a></li>
+
                     </ul>
                 </li>
                 <li>
@@ -109,7 +117,41 @@
                         <li><a href="{{ route('holiday.index') }}">Medical Visa List</a></li>
                         <li><a href="{{ route('services.index','holiday_package') }}">Service List</a></li>
                         <li><a href="{{ route('holiday.orders') }}">Orders</a></li>
+                        <li><a href="{{ route('services.orders','holiday_package') }}">Service Orders</a></li>
+
                     </ul>
+                </li>
+
+                <li class="menu-title">Wallet Management</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-university"></i>
+                        <span>Bank Information</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('bank.info.index') }}">Bank List</a></li>
+                        <li><a href="{{ route('bank.info.add') }}">Add Bank</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-university"></i>
+                        <span>Balance Request</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('balance.request.index') }}">All Request List</a></li>
+                        <li><a href="{{ route('balance.request.index',['type' => 'pending']) }}">Pending Request List</a></li>
+                        <li><a href="{{ route('balance.request.index',['type' => 'approved']) }}">Approved Request List</a></li>
+                        <li><a href="{{ route('balance.request.index',['type' => 'cancelled']) }}">Cancelled Request List</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-title">System</li>
+                <li>
+                    <a href="{{ route('settings') }}">
+                        <i class="uil-cog"></i>
+                        <span>Settings</span>
+                    </a>
                 </li>
             </ul>
         </div>

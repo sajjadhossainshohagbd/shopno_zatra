@@ -3,7 +3,7 @@
 @endpush
 <div class="login-wrapper">
     <div class="loginbox">
-        <div class="w-100">
+        <div class="col-md-6 m-auto">
             <h1 class="text-center">Log In</h1>
 
             <form wire:submit='login'>
@@ -39,7 +39,7 @@
                     </label>
                 </div>
                 <div class="d-grid">
-                    <button class="btn btn-primary btn-start" type="submit">Log In</button>
+                    <button class="btn btn-primary" type="submit">Log In <i class="fas fa-spinner fa-spin" wire:loading></i></button>
                 </div>
             </form>
         </div>

@@ -19,13 +19,31 @@
                         <div class="text-center">
                             <img src="{{ $service->show_thumbnail }}" alt="Thumbnail" class="img-thumbnail img-fluid"><br>
                             <b class="p-2"><h3>Price : <b>{{ round($service->price) }} BDT</b></h3></b>
-                            <button class="btn btn-success bg-app m-3" wire:click='buyNow' wire:confirm='Are you sure to purchase this item?' wire:target='buyNow' wire:loading.attr='disabled'>Buy Now <i wire:loading class="fas fa-spinner fa-spin"></i></button>
                         </div>
 
                         <h4 class="text-center bg-app p-2 text-white">Service Description</h4>
                         <p class="text-justify p-2">
                             {!! $service->description !!}
                         </p>
+                        <h4 class="text-center bg-app p-2 text-white">Terms & Conditions</h4>
+                        <p class="text-justify p-2">
+                            {!! $service->terms_condition !!}
+                        </p>
+                        <hr>
+                        <div class="text-center">
+                            @error('terms_condition')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                            <form wire:submit='buyNow'>
+                                <label class="@error('terms_condition') is-invalid @enderror">
+                                    <input type="checkbox" class="form-check-input" wire:model='terms_condition'>
+                                    I agree with terms & conditions.
+                                </label>
+                                <br>
+
+                                <button class="btn btn-lg btn-success bg-app m-3" wire:loading.attr='disabled'>Buy Now <i wire:loading class="fas fa-spinner fa-spin"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ class Details extends Component
 {
     #[Locked]
     public $service;
+    public $terms_condition;
 
     public function mount($id)
     {
@@ -25,6 +26,10 @@ class Details extends Component
 
     public function buyNow()
     {
+        $this->validate([
+            'terms_condition' => 'required'
+        ]);
+
         if(!auth()->check()) {
             return to_route('login');
         }
@@ -37,6 +42,7 @@ class Details extends Component
         $history->user_id = auth()->id();
         $history->service_id = $this->service->id;
         $history->service_price = $this->service->price;
+        $history->payment_status = 'paid';
         $history->status = 'pending';
         $history->save();
 

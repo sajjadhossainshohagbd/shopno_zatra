@@ -11,62 +11,27 @@
             <div class="row">
                 <div class="col-lg-2 col-md-3">
                     <div class="banner-list">
-                        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist"
+                        <div class="nav flex-column nav-pills me-3" id="videoSection" role="tablist"
                             aria-orientation="vertical">
-                            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                                aria-selected="true">Login / Sign Up
+                            @foreach ($this->sections as $section)
+                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="data-{{ $loop->index }}-tab" data-bs-toggle="pill"
+                                data-bs-target="#tab-{{ $loop->index }}" type="button" role="tab" aria-controls="tab-{{ $loop->index }}"
+                                aria-selected="true"> {{ $section->name }}
                             </button>
-                            <button class="nav-link" id="v-pills-menu-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-menu" type="button" role="tab" aria-controls="v-pills-menu"
-                                aria-selected="false">Menu
-                            </button>
-                            <button class="nav-link" id="v-pills-home2-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-home2" type="button" role="tab" aria-controls="v-pills-home2"
-                                aria-selected="false">Home
-                            </button>
-                            <button class="nav-link" id="v-pills-service-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-service" type="button" role="tab"
-                                aria-controls="v-pills-service" aria-selected="false">Service
-                            </button>
-                            <button class="nav-link" id="v-pills-payment-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-payment" type="button" role="tab"
-                                aria-controls="v-pills-payment" aria-selected="false">Payment
-                            </button>
-                            <button class="nav-link" id="v-pills-contact-tab" data-bs-toggle="pill"
-                                data-bs-target="#v-pills-contact" type="button" role="tab"
-                                aria-controls="v-pills-contact" aria-selected="false">Contact
-                            </button>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-9 mt-4 mt-lg-0">
                     <div class="banner-infos">
-                        <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab" tabindex="0">
-                                <img src="{{ asset('frontend/assets') }}/images/banner.png" alt="banner">
+                        <div class="tab-content" id="videoSectionContent">
+                            @foreach ($this->sections as $section)
+                            <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }} " id="tab-{{ $loop->index }}" role="tabpanel"
+                                aria-labelledby="data-{{ $loop->index }}-tab" tabindex="0">
+                                <iframe src="{{ $section->video_url }}" class="w-100" style="height: 350px;" loading="lazy"></iframe>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-menu" role="tabpanel"
-                                aria-labelledby="v-pills-menu-tab" tabindex="0">
-                                <img src="{{ asset('frontend/assets') }}/images/banner.png" alt="banner">
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-home2" role="tabpanel"
-                                aria-labelledby="v-pills-home2-tab" tabindex="0">
-                                <img src="{{ asset('frontend/assets') }}/images/banner.png" alt="banner">
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-service" role="tabpanel"
-                                aria-labelledby="v-pills-service-tab" tabindex="0">
-                                <img src="{{ asset('frontend/assets') }}/images/banner.png" alt="banner">
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-payment" role="tabpanel"
-                                aria-labelledby="v-pills-payment-tab" tabindex="0">
-                                <img src="{{ asset('frontend/assets') }}/images/banner.png" alt="banner">
-                            </div>
-                            <div class="tab-pane fade" id="v-pills-contact" role="tabpanel"
-                                aria-labelledby="v-pills-contact-tab" tabindex="0">
-                                <img src="{{ asset('frontend/assets') }}/images/banner.png" alt="banner">
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -190,9 +155,6 @@
                     <div class="col-lg-6 col-md-7">
                         <div class="header-left-text">
                             <h3>Ticket</h3>
-                            <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
-                                Faux 3d elements and real-world textures mentally
-                            </p>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 mt-4 mt-lg-0 mt-md-0">
@@ -203,14 +165,14 @@
                                     <div class="play-btn">
                                         <a class="my-video-links" data-autoplay="true" data-vbtype="video"
                                             data-maxwidth="700px"
-                                            href="https://youtu.be/Dex0hq46MwI?si=ueClauoB1t4fyhzN">
+                                            href="{{ settings('ticket_video_link') }}">
                                             <i class="fa-solid fa-play">
                                             </i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 mt-4 mt-lg-0 mt-md-4">
+                            {{-- <div class="col-lg-5 mt-4 mt-lg-0 mt-md-4">
                                 <div class="header-right-text">
                                     <h3>Get More Service</h3>
                                     <div class="nice-select">
@@ -222,7 +184,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -629,7 +591,7 @@
                             <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
                             <div class="play-btn">
                                 <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                    href="https://youtu.be/Dex0hq46MwI?si=ueClauoB1t4fyhzN">
+                                    href="{{ settings('tourist_video_link') }}">
                                     <i class="fa-solid fa-play">
                                     </i>
                                 </a>
@@ -713,9 +675,9 @@
                     <div class="col-12 col-lg-8 col-md-7">
                         <div class="header-left-text">
                             <h3>Hotel Booking</h3>
-                            <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
+                            {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
                                 Faux 3d elements and real-world textures mentally
-                            </p>
+                            </p> --}}
                         </div>
                         <div class="header-checkbox">
                             <div class="form-check form-check-inline">
@@ -737,7 +699,7 @@
                             <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
                             <div class="play-btn">
                                 <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                    href="https://youtu.be/Dex0hq46MwI?si=ueClauoB1t4fyhzN">
+                                    href="{{ settings('hotel_video_link') }}">
                                     <i class="fa-solid fa-play">
                                     </i>
                                 </a>
@@ -978,10 +940,10 @@
                     <div class="visa-check-left">
                         <h6>Visa Check</h6>
                         <h3>Check Your Visa Today With Passport Number</h3>
-                        <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
+                        {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
                             elements and real-world textures mentally down to the fact that we understand the “flatness”
                             of our phone screens. Faux 3d elements down to the fact that we understand the “flatness” of
-                            our phone screens. Faux 3d elements</p>
+                            our phone screens. Faux 3d elements</p> --}}
                         <div class="nice-select">
                             <span class="current">Select Country</span>
                             <ul class="list">

@@ -66,7 +66,7 @@
                                                 </td>
                                             </tr>
                                             @empty
-                                            <td colspan="6">No Statement Found!</td>
+                                            <td colspan="8" class="text-center">No Statement Found!</td>
                                             @endforelse
                                         </tbody>
                                     </table>

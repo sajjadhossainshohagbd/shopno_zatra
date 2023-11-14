@@ -55,7 +55,7 @@
                 </ul>
 
                 <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
+                    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
                     <ul class="dropdown-menu">
                         @auth
                         <li> <a class="dropdown-item" href="{{ route('user.my.profile') }}">Profile</a></li>
@@ -155,7 +155,7 @@
     <script src="{{ asset('frontend') }}/assets/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @stack('js')
-    
+
     <!-- Javascript area end -->
 </body>
 

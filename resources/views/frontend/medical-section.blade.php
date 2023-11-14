@@ -36,7 +36,7 @@
                         <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
                         <div class="play-btn">
                             <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                href="https://youtu.be/Dex0hq46MwI?si=ueClauoB1t4fyhzN">
+                                href="{{ settings('medical_video_link') }}">
                                 <i class="fa-solid fa-play">
                                 </i>
                             </a>

@@ -37,7 +37,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="" target="_blank">
+                                <a href="{{ route('services.details',$service->id) }}" target="_blank">
                                     {{ $service->name }}
                                 </a>
                             </td>

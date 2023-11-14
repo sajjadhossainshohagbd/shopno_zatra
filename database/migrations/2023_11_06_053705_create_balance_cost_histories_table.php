@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('service_id');
             $table->decimal('service_price');
             $table->text('reason')->nullable();
+            $table->enum('payment_status',['unpaid','paid']);
             $table->enum('status',['pending','processing','approved','cancelled']);
             $table->timestamps();
         });

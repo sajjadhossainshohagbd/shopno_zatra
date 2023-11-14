@@ -9,5 +9,18 @@ class BalanceRequest extends Model
 {
     use HasFactory;
 
-    
+    public function user()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
+
+    public function bank()
+    {
+        return $this->hasOne(BankInfo::class,'id','bank_id');
+    }
+
+    protected $casts = [
+        'date_of_payment' => 'datetime'
+    ];
+
 }
