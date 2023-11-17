@@ -36,7 +36,7 @@ Route::get('/holiday-order/{id}',App\Livewire\Frontend\Holiday\Order::class)->na
 Route::get('services-details/{id}',App\Livewire\Frontend\Service\Details::class)->name('services.details');
 
 // CV Builder
-Route::get('/cv-builder',[App\Http\Controllers\Frontend\CVBuilderController::class,'index']);
+Route::get('/cv-builder',[App\Http\Controllers\Frontend\CVBuilderController::class,'index'])->name('cv.builder');
 Route::post('/preview-cv',[App\Http\Controllers\Frontend\CVBuilderController::class,'preview'])->name('preview.cv');
 
 // Courses

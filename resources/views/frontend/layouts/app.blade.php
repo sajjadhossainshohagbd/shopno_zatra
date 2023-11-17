@@ -22,26 +22,54 @@
 
     <!-- Nav area start -->
 
-    <nav class="navbar navbar-expand-md">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
-                <picture>
-                    <img src="{{ asset('frontend/assets') }}/images/logo.png" alt="logo">
-                </picture>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end p-3 p-lg-0" id="navbarSupportedContent">
-                <div class="nav-search d-flex align-items-center">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search Here">
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <div class="container">
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <picture>
+                        <img src="{{ asset('frontend/assets') }}/images/logo.png" alt="logo">
+                    </picture>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end p-3 p-lg-0" id="navbarSupportedContent">
+                    <div class="nav-search d-flex align-items-center">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search Here">
+                    </div>
+
+                    <ul class="navbar-nav mb-2 mb-lg-0 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link bg-app text-white me-1" aria-current="page" href="#">Inbox</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bg-app text-white me-1" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bg-app text-white me-1" href="#">News Media</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('courses') }}">Courses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('login') }}">Login</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="navbar-nav mb-2 mb-lg-0 mb-md-0">
+            </div>
+        </nav>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5> <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body justify-content-end p-3 p-lg-0">
+                {{-- <ul class="navbar-nav mb-2 mb-lg-0 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inbox</a>
+                        <a class="nav-link" aria-current="page" href="#">Inbox</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
@@ -52,26 +80,114 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('courses') }}">Courses</a>
                     </li>
-                </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                </ul> --}}
 
-                <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Account</a>
-                    <ul class="dropdown-menu">
-                        @auth
-                        <li> <a class="dropdown-item" href="{{ route('user.my.profile') }}">Profile</a></li>
-                        <li><a class="dropdown-item" href="{{ route('user.my.courses') }}">My Courses</a></li>
-                        <li><a class="dropdown-item" href="{{ route('user.logout') }}">Log Out</a></li>
-                        @else
-                        <li> <a class="dropdown-item" href="{{ route('login') }}">Log In</a></li>
-                        <li> <a class="dropdown-item" href="{{ route('register') }}">Sign Up</a></li>
-                        @endauth
-                    </ul>
-                  </div>
+                <div class="accordion" id="accordion0">
 
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            @auth
+                            <a href="{{ route('my.profile') }}" class="accordion-button single-link collapsed" style=".accordion-button::after {}">Inbox</a>
+                            @else
+                            <a href="{{ route('login') }}" class="accordion-button single-link collapsed">Inbox</a>
+                            @endauth
+                        </h2>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button single-link collapsed">About Us</a>
+                        </h2>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button single-link collapsed">News Media</a>
+                        </h2>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="{{ route('courses') }}" class="accordion-button single-link collapsed">Courses</a>
+                        </h2>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            @auth
+                            <a href="{{ route('my.profile') }}" class="accordion-button single-link collapsed">My Dashboard</a>
+                            @else
+                            <a href="{{ route('login') }}" class="accordion-button single-link collapsed">Log In</a>
+                            @endauth
+                        </h2>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#hajjOffer" aria-controls="hajjOffer"> Hajj Visa <div class="badge bg-danger ms-2 fa-beat"> Offer</div></a>
+                        </h2>
+                        <div id="hajjOffer" class="accordion-collapse collapse" data-bs-parent="#accordion0">
+                            <div class="accordion-body">
+                                @foreach (App\Models\Hajj::all() as $item)
+                                <a href="{{ route('hajj.details',['type' => $item->type,'id' => $item->id]) }}">{{ $item->package_name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#workOffer" aria-controls="workOffer"> Work Visa <div class="badge bg-danger ms-2 fa-beat"> Offer</div></a>
+                        </h2>
+                        <div id="workOffer" class="accordion-collapse collapse" data-bs-parent="#accordion0">
+                            <div class="accordion-body">
+                                @foreach (App\Models\WorkVisa::all() as $item)
+                                <a href="{{ route('work.visa.details',$item->id) }}">{{ $item->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#educationOffer" aria-controls="educationOffer"> Education Visa <div class="badge bg-danger ms-2 fa-beat"> Offer</div></a>
+                        </h2>
+                        <div id="educationOffer" class="accordion-collapse collapse" data-bs-parent="#accordion0">
+                            <div class="accordion-body">
+                                @foreach (App\Models\EducationVisa::all() as $item)
+                                <a href="{{ route('education.visa.details',$item->id) }}">{{ $item->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#mediOffer" aria-controls="mediOffer"> Medical Visa <div class="badge bg-danger ms-2 fa-beat"> Offer</div></a>
+                        </h2>
+                        <div id="mediOffer" class="accordion-collapse collapse" data-bs-parent="#accordion0">
+                            <div class="accordion-body">
+                                @foreach (App\Models\MedicalVisa::all() as $item)
+                                <a href="{{ route('medical.visa.details',$item->id) }}">{{ $item->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#holidayOffer" aria-controls="holidayOffer"> Holiday Package <div class="badge bg-danger ms-2 fa-beat"> Offer</div></a>
+                        </h2>
+                        <div id="holidayOffer" class="accordion-collapse collapse" data-bs-parent="#accordion0">
+                            <div class="accordion-body">
+                                @foreach (App\Models\Holiday::all() as $item)
+                                <a href="{{ route('holiday.details',$item->id) }}">{{ $item->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-
+    </header>
     <!-- Nav area end -->
 
 

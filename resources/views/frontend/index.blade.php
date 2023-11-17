@@ -9,12 +9,12 @@
     <div class="banner-main">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-3">
+                <div class="col-3 col-lg-2 col-md-3">
                     <div class="banner-list">
                         <div class="nav flex-column nav-pills me-3" id="videoSection" role="tablist"
                             aria-orientation="vertical">
                             @foreach ($this->sections as $section)
-                            <button class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="data-{{ $loop->index }}-tab" data-bs-toggle="pill"
+                            <button @if($section->type == 'link') onclick="window.location.href='{{ $section->link }}'" @endif class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="data-{{ $loop->index }}-tab" data-bs-toggle="pill"
                                 data-bs-target="#tab-{{ $loop->index }}" type="button" role="tab" aria-controls="tab-{{ $loop->index }}"
                                 aria-selected="true"> {{ $section->name }}
                             </button>
@@ -23,21 +23,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-9 mt-4 mt-lg-0">
+                <div class="col-9 col-lg-10 col-md-9 mt-lg-0">
                     <div class="banner-infos">
                         <div class="tab-content" id="videoSectionContent">
                             @foreach ($this->sections as $section)
-                            <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }} " id="tab-{{ $loop->index }}" role="tabpanel"
-                                aria-labelledby="data-{{ $loop->index }}-tab" tabindex="0">
-                                <iframe src="{{ $section->video_url }}" class="w-100" style="height: 350px;" loading="lazy"></iframe>
-                            </div>
+                                @if($section->type == 'video')
+                                <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }} " id="tab-{{ $loop->index }}" role="tabpanel"
+                                    aria-labelledby="data-{{ $loop->index }}-tab" tabindex="0">
+                                    <iframe src="{{ $section->video_url }}" class="w-100 iframe-video" loading="lazy" frameborder="0"></iframe>
+                                </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>
                 </div>
             </div>
             <div class="need-main">
-                <h2>Please Select Your Need</h2>
+                <h2 class="text-center">Please Select Your Need</h2>
+                <div class="nav-search d-flex align-items-center mt-2 mb-2 d-md-none">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search Here">
+                </div>
                 <div class="row mt-4 need-slider">
                     <div class="col-lg-2">
                         <div class="need-inner">
@@ -933,17 +939,17 @@
 
     <!-- Visa Check area start -->
 
-    <div class="visa-check-main">
+    {{-- <div class="visa-check-main">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-5 col-md-6">
                     <div class="visa-check-left">
                         <h6>Visa Check</h6>
                         <h3>Check Your Visa Today With Passport Number</h3>
-                        {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
+                        <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
                             elements and real-world textures mentally down to the fact that we understand the “flatness”
                             of our phone screens. Faux 3d elements down to the fact that we understand the “flatness” of
-                            our phone screens. Faux 3d elements</p> --}}
+                            our phone screens. Faux 3d elements</p>
                         <div class="nice-select">
                             <span class="current">Select Country</span>
                             <ul class="list">
@@ -971,7 +977,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Visa Check area end -->
 
@@ -983,48 +989,6 @@
                 <div class="col-lg-4 col-md-4">
                     <div class="header-left-text">
                         <h3>CV</h3>
-                        <div class="nice-select">
-                            <span class="current">Select Country</span>
-                            <ul class="list">
-                                <li data-value="1" class="option">Bangladesh</li>
-                                <li data-value="2" class="option">India</li>
-                                <li data-value="4" class="option">Sudia Arab</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="work-select">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="nice-select">
-                            <span class="current">School CV</span>
-                            <ul class="list">
-                                <li data-value="1" class="option">Bangladesh</li>
-                                <li data-value="2" class="option">India</li>
-                                <li data-value="4" class="option">Sudia Arab</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="nice-select">
-                            <span class="current">Collage CV</span>
-                            <ul class="list">
-                                <li data-value="1" class="option">Bangladesh</li>
-                                <li data-value="2" class="option">India</li>
-                                <li data-value="4" class="option">Sudia Arab</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="nice-select">
-                            <span class="current">Job CV</span>
-                            <ul class="list">
-                                <li data-value="1" class="option">Bangladesh</li>
-                                <li data-value="2" class="option">India</li>
-                                <li data-value="4" class="option">Sudia Arab</li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1041,13 +1005,9 @@
                             gestures was quite new. To make people more comfortable with the interface, the initial
                             designs used Skeuomorphism for the UI.
                         </p>
-                        <p>When the first iPhone launched, the idea of interacting with a small device using
-                            multi-touch gestures was quite new. To make people more comfortable with the interface, the
-                            initial designs used Skeuomorphism for the UI
-                        </p>
                         <div class="buttons">
-                            <button>Apply For CV</button>
-                            <button>Know More Service</button>
+                            <button onclick="location.href='{{ route('cv.builder') }}'">Create CV</button>
+                            <button>Order for Special CV</button>
                         </div>
                     </div>
                 </div>
@@ -1066,18 +1026,17 @@
                     <div class="col-lg-6 col-md-7">
                         <div class="header-left-text">
                             <h3>Abroad to Abroad Balance Transfer For Emergency</h3>
-                            <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
+                            {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
                                 Faux 3d elements and real-world textures mentally down to the fact that we understand
-                            </p>
+                            </p> --}}
                         </div>
                         <div class="buttons">
-                            <button>My Balance Transfer</button>
+                            <button onclick="location.href='{{ route('user.balance.transfer') }}'">My Balance Transfer</button>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-4">
                         <div class="balance-right buttons">
-                            <button>Login/Sign Up</button>
-                            <button><i class="fa-regular fa-circle-play"></i> Know Information</button>
+                            <button onclick="location.href='{{ route('login') }}'">Login/Sign Up</button>
                             <button>Help</button>
                         </div>
                     </div>

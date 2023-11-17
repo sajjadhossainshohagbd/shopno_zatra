@@ -11,9 +11,7 @@ class CourseContent extends Model
 
     public function getVideoUrlAttribute()
     {
-
-        $video_id = parse_url($this->video_link,PHP_URL_PATH);
-        $url = 'https://player.vimeo.com/video'.$video_id;
+        $url = generateVideoEmbedUrl($this->video_link);
         return $url;
     }
 

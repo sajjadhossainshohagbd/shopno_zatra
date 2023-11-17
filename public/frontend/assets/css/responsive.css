@@ -21,7 +21,7 @@
   .banner-list .nav {
     margin-right: 0 !important;
     flex-direction: row !important;
-    gap: 10px;
+    gap: 6px;
     justify-content: space-evenly;
   }
 
@@ -32,6 +32,7 @@
     font-size: 14px;
     line-height: 12px;
     text-align: center;
+    width: 75px;
   }
 
   .banner-main {
@@ -506,4 +507,17 @@
     padding: 15px 25px;
     font-size: 17px;
   }
+}
+@media (max-width: 480px) {
+    .iframe-video {
+        height: 285px;
+    }
+    .banner-main {
+        padding: 0;
+    }
+}
+
+.banner-main .row>* {
+    padding-left: 0;
+    padding-right : 5px;
 }

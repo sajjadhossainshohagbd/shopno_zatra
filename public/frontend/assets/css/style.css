@@ -86,7 +86,8 @@ body {
 }
 
 .nav-search {
-  width: 20%;
+  width: 50%;
+  margin: 0 auto;
   background: #fff;
   padding: 10px 20px;
   border: 1px solid #eae9d3;
@@ -1298,4 +1299,29 @@ footer {
 }
 .custom-select {
     padding: 20px;
+}
+.iframe-video {
+    height: 68vh;
+}
+header .offcanvas {
+    max-width: 85%!important;
+}
+header .offcanvas-header {
+    background: #f0f2f5;
+}
+header
+.accordion-button:focus {
+    box-shadow: none;
+    border: none;
+}
+header .offcanvas .nav-link {
+    font-size: 1rem;
+}
+.single-link::after {
+    content: none;
+}
+a.nav-link.bg-app.text-white.me-1:hover {
+    background-color: #fff;
+    color: #000 !important;
+    border: 1px solid #c0b914;
 }

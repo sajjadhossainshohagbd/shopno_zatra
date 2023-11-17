@@ -29,7 +29,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="category">Category <small class="text text-danger">*</small></label>
                             <select wire:model='form.type' class="form-select @error('form.type') is-invalid @enderror" id="category">
-                                <option value="" selected disabled>Select Category</option>
+                                <option value="" selected>Select Category</option>
                                 <option value="hajj">Hajj</option>
                                 <option value="umrah">Umrah</option>
                             </select>

@@ -5,8 +5,14 @@
     <div>
         <form wire:submit='add'>
             <div class="row">
-                <div class="col-6">
+                <div class="col-3">
                     <input type="text" class="form-control @error('name') is-invalid @enderror" wire:model='name' placeholder="Menu Name">
+                </div>
+                <div class="col-3">
+                    <select wire:model='type' class="form-select">
+                        <option value="video">Video</option>
+                        <option value="link">Link</option>
+                    </select>
                 </div>
                 <div class="col-6">
                     <input type="url" class="form-control @error('url') is-invalid @enderror" wire:model='url' placeholder="Video URL">
@@ -22,6 +28,7 @@
                 <tr>
                     <th>#</th>
                     <th>Menu Name</th>
+                    <th>Type</th>
                     <th>Video URL</th>
                     <th>Action</th>
                 </tr>
@@ -31,6 +38,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $section->name }}</td>
+                    <td>{{ ucfirst($section->type) }}</td>
                     <td>{{ $section->url }}</td>
                     <td>
                         <button class="btn btn-danger btn-rounded" wire:confirm='Are you sure?' wire:click='delete("{{ $section->id }}")'><i class="fa fa-trash"></i> Delete </button>

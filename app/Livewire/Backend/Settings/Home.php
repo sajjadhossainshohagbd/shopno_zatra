@@ -10,16 +10,19 @@ class Home extends Component
 {
     public $name;
     public $url;
+    public $type = 'video';
 
     public function add()
     {
         $this->validate([
             'name' => 'required',
-            'url' => 'required'
+            'url' => 'required',
+            'type' => 'required',
         ]);
 
         $section = new VideoSection();
         $section->name = $this->name;
+        $section->type = $this->type;
         $section->url = $this->url;
         $section->save();
 
@@ -34,7 +37,7 @@ class Home extends Component
     public function delete($id)
     {
         VideoSection::destroy($id);
-        
+
         $this->dispatch('alert',[
             'type' => 'success',
             'message' => 'Menu deleted successfully!'

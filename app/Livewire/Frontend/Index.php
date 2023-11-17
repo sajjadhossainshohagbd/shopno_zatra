@@ -13,7 +13,7 @@ use Livewire\Attributes\Locked;
 #[Layout('frontend.layouts.app')]
 class Index extends Component
 {
-    #[Computed(cache: true)]
+    #[Computed]
     public function sections()
     {
         return VideoSection::all();

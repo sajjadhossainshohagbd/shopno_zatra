@@ -65,6 +65,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <x-select label="Categories" wire:model='category_id'>
+                                                <option value="" selected>Select Category</option>
                                                 @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
@@ -74,6 +75,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <x-select label="Course Level" wire:model='course_level'>
+                                                <option value="">Select Level</option>
                                                 <option value="beginner">Beginner</option>
                                                 <option value="intermediate">Intermediate</option>
                                                 <option value="advanced">Advanced</option>
@@ -82,7 +84,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label" for="price">Price <small class="text text-danger">*</small> <small class="text text-info">(Example : 72 Hours)</small></label>
+                                            <label class="form-label" for="price">Price <small class="text text-danger">*</small></label>
                                             <input id="price" wire:model="price" type="number" class="form-control" placeholder="Enter Course Price">
                                         </div>
                                     </div>
