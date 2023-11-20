@@ -2006,9 +2006,8 @@ html.menu-opened body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-	padding: 80px 0;
 	position: relative;
-    min-height: 720px;
+    /* min-height: 720px; */
 }
 .feature-box {
     position: relative;
@@ -2077,16 +2076,16 @@ html.menu-opened body {
     color: #fff;
     margin: 0 auto;
 }
-.mentoring-course .owl-stage {
+/* .mentoring-course .owl-stage {
 	padding-top: 55px;
-}
+} */
 .feature-heading {
 	text-transform: uppercase;
 	font-size: 14px;
 	font-weight: 700;
 }
 .feature-text {
-	font-size: 18px;
+	font-size: 15px;
 	font-weight: 700;
 	padding-top: 25px;
 	transition: all 0.5s ease;
@@ -2095,7 +2094,7 @@ html.menu-opened body {
     -ms-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     max-width: 130px;
-    margin: 0 auto 25px;
+    margin: 0 auto;
 }
 .feature-bg p {
 	margin-bottom: 0px;
@@ -2132,7 +2131,7 @@ html.menu-opened body {
 	margin-top: 26px;
 }
 .new-course {
-	padding: 80px 0px 56px;
+	padding-top: 30px;
 	background-image: url(../images/banner.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -11422,10 +11421,10 @@ textarea:focus {
 	max-width: 100%;
 	width: 100%;
 	font-weight: 600;
-	padding: 100px;
+	padding: 20px;
 }
 .login-wrapper .loginbox .img-logo {
-	margin-bottom: 54px;
+	margin-bottom: 44px;
 	display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -19204,7 +19203,7 @@ input[type=password]::-ms-clear
 		padding: 0px 10px;
 	}
     .login-wrapper {
-        padding-top: 40px;
+        padding-top: 20px;
     }
 	.login-wrapper .loginbox h1 {
 		font-size: 28px;

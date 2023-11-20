@@ -123,7 +123,7 @@
   }
 
   .extra-btn button {
-    padding: 15px 0px;
+    padding: 6px 0px;
     font-size: 18px;
   }
 
@@ -203,7 +203,7 @@
 
   .medi-main .hajj-selector .nav-link,
   .holi-main .hajj-selector .nav-link {
-    padding: 14px 30px;
+    padding: 8px 14px;
     margin-right: 10px;
     margin-bottom: 10px;
   }
@@ -500,7 +500,7 @@
 
   .holi-main .hajj-selector .nav-link,
   .hajj-selector .nav-link {
-    padding: 16px 30px;
+    padding: 8px 14px;
   }
 
   .banner2-main .buttons button {
@@ -508,7 +508,7 @@
     font-size: 17px;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 840px) {
     .iframe-video {
         height: 285px;
     }
@@ -520,4 +520,29 @@
 .banner-main .row>* {
     padding-left: 0;
     padding-right : 5px;
+}
+.extra-btn {
+    display: none;
+}
+
+@media (max-width : 720px){
+    .section-video {
+        display: none;
+    }
+    .extra-btn {
+        display: block;
+    }
+    .need-main h2 {
+        font-size: 18px;
+    }
+    .need-text h3 {
+        font-size: 13px;
+    }
+    .header-left-text h3 {
+        font-size: 17px;
+    }
+    /* .extra-btn {
+        width: 115px;
+        margin-left: auto;
+    } */
 }

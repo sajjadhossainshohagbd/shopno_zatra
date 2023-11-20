@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/theme-basic.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/theme-glass.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v=1.2">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v=1.2">
     @stack('css')
 </head>
 
@@ -47,7 +47,7 @@
                             <a class="nav-link bg-app text-white me-1" aria-current="page" href="#">Inbox</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-app text-white me-1" href="#">About</a>
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('about.us') }}">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link bg-app text-white me-1" href="#">News Media</a>
@@ -67,24 +67,6 @@
                 <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5> <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body justify-content-end p-3 p-lg-0">
-                {{-- <ul class="navbar-nav mb-2 mb-lg-0 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Inbox</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">News Media</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('courses') }}">Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Login</a>
-                    </li>
-                </ul> --}}
-
                 <div class="accordion" id="accordion0">
 
                     <div class="accordion-item">
@@ -98,7 +80,7 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <a href="#" class="accordion-button single-link collapsed">About Us</a>
+                            <a href="{{ route('about.us') }}" class="accordion-button single-link collapsed">About Us</a>
                         </h2>
                     </div>
                     <div class="accordion-item">
@@ -206,10 +188,8 @@
                 <div class="col-lg-12">
                     <div class="extra-links">
                         <ul>
-                            <li><a href="#">Why Choose Us</a></li>
-                            <li><a href="#"> About Us </a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Recommendation</a></li>
+                            <li><a href="{{ route('about.us') }}"> About Us </a></li>
+                            <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -221,7 +201,7 @@
                             <div class="icons">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
-                            <p>2972 Westheimer Rd. Santa Ana, Illinois 85486 </p>
+                            <p>{{ settings('footer_address') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
@@ -229,7 +209,7 @@
                             <div class="icons">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
-                            <p>+8801000000000, +8801000000000</p>
+                            <p>{{ settings('footer_phone') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
@@ -237,7 +217,7 @@
                             <div class="icons">
                                 <i class="fa-regular fa-envelope-open"></i>
                             </div>
-                            <p>yourmail123@gmail.com</p>
+                            <p>{{ settings('footer_email') }}</p>
                         </div>
                     </div>
                 </div>
@@ -245,7 +225,7 @@
             <div class="row justify-content-end">
                 <div class="col-lg-6 text-end">
                     <div class="copyright ">
-                        <p><i class="fa-regular fa-copyright"></i> Copyright 2023 . Shopno Zatra. All Right Reserved</p>
+                        <p> Copyright <i class="fa-regular fa-copyright"></i> {{ date('Y') }} . Shopno Zatra. All Right Reserved</p>
                     </div>
                 </div>
             </div>
@@ -262,14 +242,14 @@
 
     <!-- Javascript area start -->
 
-    <script src="{{ asset('frontend/courses') }}/js/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/jquery.nice-select.min.js"> </script>
-    <script src="{{ asset('frontend') }}/assets/js/slick.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/venobox.min.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/bundle.js"></script>
-    <script src="{{ asset('frontend') }}/assets/js/index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('frontend/courses') }}/js/jquery-3.6.0.min.js" data-navigate-track></script>
+    <script src="{{ asset('frontend') }}/assets/js/bootstrap.bundle.min.js" data-navigate-track></script>
+    <script src="{{ asset('frontend') }}/assets/js/jquery.nice-select.min.js" data-navigate-track> </script>
+    <script src="{{ asset('frontend') }}/assets/js/slick.min.js" data-navigate-track></script>
+    <script src="{{ asset('frontend') }}/assets/js/venobox.min.js" data-navigate-track></script>
+    <script src="{{ asset('frontend') }}/assets/js/bundle.js" data-navigate-track></script>
+    <script src="{{ asset('frontend') }}/assets/js/index.js?v=1.2" data-navigate-track></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" data-navigate-track></script>
     @stack('js')
 
     <!-- Javascript area end -->

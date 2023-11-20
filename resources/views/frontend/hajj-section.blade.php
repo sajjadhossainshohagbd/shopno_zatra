@@ -1,42 +1,48 @@
-<div class="hajj-main">
+<div class="hajj-main" id="hajj">
     <div class="container">
         <div class="heading">
             <div class="row justify-content-between align-items-center">
-                <div class="col-lg-6 col-md-7">
+                <div class="col-8 col-lg-6 col-md-7">
                     <div class="header-left-text">
                         <h3>Hajj Visa</h3>
                         {{-- <p>
                             It all boils down to the fact that we understand the “flatness” of our phone screens.
                             Faux 3d elements and real-world textures mentally
                         </p> --}}
-                        <div class="mt-4">
-                            <select class="form-select custom-select" wire:change='setService($event.target.value)'>
-                                <option value="">Our Hajj Services</option>
-                                @foreach ($hajj_services as $service)
-                                <option value="{{ $service->id }}">{{ $service->name }}</option>
-                                @endforeach
-                            </select>
-                            @if($serviceId)
-                            <a href="{{ route('services.details',$serviceId) }}" class="m-2 btn btn-primary text-white"><h6>View Details, Click here.</h6></a>
-                            @endif
+
+                    </div>
+                </div>
+                <div class="col-4 col-lg-5 col-md-5 mt-lg-0 mt-md-0">
+                    <div class="row align-items-lg-center justify-content-end">
+                        <div class="col-lg-6">
+                            <div class="header-video section-video">
+                                <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
+                                <div class="play-btn">
+                                    <a class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                        data-maxwidth="700px"
+                                        href="{{ settings('hajj_video_link') }}">
+                                        <i class="fa-solid fa-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="extra-btn">
+                                <button class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                data-maxwidth="700px" href="{{ settings('hajj_video_link') }}">Know More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-5 mt-4 mt-lg-0 mt-md-0">
-                    <div class="header-video">
-                        <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
-                        <div class="play-btn">
-                            <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                href="{{ settings('hajj_video_link') }}">
-                                <i class="fa-solid fa-play">
-                                </i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="extra-btn">
-                        <button>Know More Service</button>
-                    </div>
-                </div>
+            </div>
+            <div class="mt-4">
+                <select class="form-select custom-select" wire:change='setService($event.target.value)'>
+                    <option value="">Our Hajj Services</option>
+                    @foreach ($hajj_services as $service)
+                    <option value="{{ $service->id }}">{{ $service->name }}</option>
+                    @endforeach
+                </select>
+                @if($serviceId)
+                <a href="{{ route('services.details',$serviceId) }}" class="m-2 btn btn-primary text-white"><h6>View Details, Click here.</h6></a>
+                @endif
             </div>
         </div>
         <div class="hajj-selector">

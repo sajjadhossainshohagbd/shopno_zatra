@@ -19,15 +19,15 @@ class CVBuilderController extends Controller
         if($request->hasFile('picture')){
             $image = $request->file('picture');
 
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-
-            $image->storeAs('cv',$imageName,[
-                'disk' => 'local'
+            $imageName = $image->store('uploads/cv',[
+                'disk' => 'public'
             ]);
 
-            $imageUrl = asset('uploads/cv/'.$imageName);
+            $imageUrl = asset($imageName);
         }
+        // dd($imageUrl);
+        // dd($request->all());
 
-        return view('cv.first',['data' => $request,'imageUrl' => $imageUrl]);
+        return view('frontend.cv.one',['data' => $request,'imageUrl' => $imageUrl]);
     }
 }

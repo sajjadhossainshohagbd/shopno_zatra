@@ -1,10 +1,11 @@
 <div>
-    @push('js')
-        <script>
-            // $("select").niceSelect();
-        </script>
-    @endpush
     <!-- Banner area start -->
+    <div class="mx-3 d-md-none">
+        <div class="nav-search w-100 d-flex align-items-center mb-3 mt-3 ">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search Here">
+        </div>
+    </div>
 
     <div class="banner-main">
         <div class="container">
@@ -19,7 +20,13 @@
                                 aria-selected="true"> {{ $section->name }}
                             </button>
                             @endforeach
-
+                            <button class="nav-link" id="data-offer-tab" data-bs-toggle="pill"
+                                data-bs-target="#tab-offer" type="button" role="tab" aria-controls="tab-offer"
+                                aria-selected="true" onclick="document
+                                .getElementById('ticket-offer')
+                                .scrollIntoView({ behavior:'smooth' })">
+                                Offers
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -30,7 +37,7 @@
                                 @if($section->type == 'video')
                                 <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }} " id="tab-{{ $loop->index }}" role="tabpanel"
                                     aria-labelledby="data-{{ $loop->index }}-tab" tabindex="0">
-                                    <iframe src="{{ $section->video_url }}" class="w-100 iframe-video" loading="lazy" frameborder="0"></iframe>
+                                    <iframe src="{{ $section->video_url }}" class="w-100 iframe-video" loading="lazy" allowfullscreen frameborder="0"></iframe>
                                 </div>
                                 @endif
                             @endforeach
@@ -40,109 +47,89 @@
             </div>
             <div class="need-main">
                 <h2 class="text-center">Please Select Your Need</h2>
-                <div class="nav-search d-flex align-items-center mt-2 mb-2 d-md-none">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search Here">
-                </div>
                 <div class="row mt-4 need-slider">
                     <div class="col-lg-2">
-                        <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need1.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Travel</h3>
-                            </div>
+                        <div >
+                            <a href="#ticket" class="need-inner">
+                                <div class="need-icon">
+                                    <img src="{{ asset('frontend/assets') }}/images/need1.png" alt="need-icon">
+                                </div>
+                                <div class="need-text text-black">
+                                    <h3>Travel</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need2.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Education</h3>
-                            </div>
+                            <a href="#edu">
+                                <div class="need-icon">
+                                    <img src="{{ asset('frontend/assets') }}/images/need2.png" alt="need-icon">
+                                </div>
+                                <div class="need-text text-black">
+                                    <h3>Education</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need3.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Working</h3>
-                            </div>
+                            <a href="#work">
+                                <div class="need-icon">
+                                    <img src="{{ asset('frontend/assets') }}/images/need3.png" alt="need-icon">
+                                </div>
+                                <div class="need-text text-black">
+                                    <h3>Working</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need4.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Hotel</h3>
-                            </div>
+                            <a href="#hotel">
+                                <div class="need-icon">
+                                    <img src="{{ asset('frontend/assets') }}/images/need4.png" alt="need-icon">
+                                </div>
+                                <div class="need-text text-black">
+                                    <h3>Hotel</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need5.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Hajj</h3>
-                            </div>
+                            <a href="#hajj">
+                                <div class="need-icon">
+                                    <img src="{{ asset('frontend/assets') }}/images/need5.png" alt="need-icon">
+                                </div>
+                                <div class="need-text text-black">
+                                    <h3>Hajj</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need6.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Holiday Pack</h3>
-                            </div>
+                            <a href="#medical">
+                                <div class="need-icon">
+                                    <img src="{{ asset('frontend/assets') }}/images/need4.png" alt="need-icon">
+                                </div>
+                                <div class="need-text text-black">
+                                    <h3>Medical</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-2">
                         <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need3.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Working</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need4.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Hotel</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need5.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Hajj</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="need-inner">
-                            <div class="need-icon">
-                                <img src="{{ asset('frontend/assets') }}/images/need6.png" alt="need-icon">
-                            </div>
-                            <div class="need-text">
-                                <h3>Holiday Pack</h3>
-                            </div>
+                            <a href="#holiday">
+                                <div class="need-icon">
+                                    <img src="{{ asset('frontend/assets') }}/images/need6.png" alt="need-icon">
+                                </div>
+                                <div class="need-text text-black">
+                                    <h3>Holiday Pack</h3>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -154,19 +141,19 @@
 
     <!-- Ticktes area start -->
 
-    <div class="ticktes-main">
+    <div class="ticktes-main" id="ticket">
         <div class="container">
             <div class="heading">
-                <div class="row justify-content-between align-items-lg-center">
-                    <div class="col-lg-6 col-md-7">
+                <div class="row justify-content-end align-items-baseline">
+                    <div class="col-6 col-lg-7 col-md-7">
                         <div class="header-left-text">
                             <h3>Ticket</h3>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-5 mt-4 mt-lg-0 mt-md-0">
+                    <div class="col-6 col-lg-5 col-md-5 mt-lg-0 mt-md-0">
                         <div class="row align-items-lg-center justify-content-end">
                             <div class="col-lg-6">
-                                <div class="header-video">
+                                <div class="header-video section-video">
                                     <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
                                     <div class="play-btn">
                                         <a class="my-video-links" data-autoplay="true" data-vbtype="video"
@@ -177,20 +164,11 @@
                                         </a>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- <div class="col-lg-5 mt-4 mt-lg-0 mt-md-4">
-                                <div class="header-right-text">
-                                    <h3>Get More Service</h3>
-                                    <div class="nice-select">
-                                        <span class="current">Train</span>
-                                        <ul class="list">
-                                            <li data-value="1" class="option">Bus</li>
-                                            <li data-value="2" class="option">Flight</li>
-                                            <li data-value="4" class="option">Ship</li>
-                                        </ul>
-                                    </div>
+                                <div class="extra-btn">
+                                    <button class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                    data-maxwidth="700px" href="{{ settings('ticket_video_link') }}">Know More</button>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -449,7 +427,7 @@
 
     <!-- Get Offer area start -->
 
-    <div class="get-offer">
+    <div class="get-offer" id="ticket-offer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -578,41 +556,47 @@
     <div class="tourist-main">
         <div class="container">
             <div class="heading">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-lg-4 col-md-6">
+                <div class="row justify-content-baseline align-items-center">
+                    <div class="col-6 col-lg-7 col-md-6">
                         <div class="header-left-text">
-                            <h3>Get Tourist and Business Visa Easily</h3>
-                            <div class="nice-select">
+                            <h3> Visa</h3>
+                            {{-- <div class="nice-select">
                                 <span class="current">Select Country</span>
                                 <ul class="list">
                                     <li data-value="1" class="option">Bangladesh</li>
                                     <li data-value="2" class="option">India</li>
                                     <li data-value="4" class="option">Sudia Arab</li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0 mt-md-0">
-                        <div class="header-video">
-                            <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
-                            <div class="play-btn">
-                                <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                    href="{{ settings('tourist_video_link') }}">
-                                    <i class="fa-solid fa-play">
-                                    </i>
-                                </a>
+                    <div class="col-6 col-lg-5 col-md-6 mt-lg-0 mt-md-0 ms-auto">
+                        <div class="row align-items-lg-center justify-content-end">
+                            <div class="col-lg-6">
+                                <div class="header-video section-video">
+                                    <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
+                                    <div class="play-btn">
+                                        <a class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                            data-maxwidth="700px"
+                                            href="{{ settings('tourist_video_link') }}">
+                                            <i class="fa-solid fa-play"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="extra-btn">
+                                    <button class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                    data-maxwidth="700px" href="{{ settings('tourist_video_link') }}">Know More</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="extra-btn">
-                            <button>Know More Service</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="row mt-4">
                 <div class="col-lg-3">
                     <div class="offer-heading">
-                        <h3>Get Offer</h3>
+                        <h3>Tourist & Business Offers</h3>
                     </div>
                 </div>
             </div>
@@ -674,41 +658,35 @@
 
     <!-- Hotel area start -->
 
-    <div class="hotel-main">
+    <div class="hotel-main" id="hotel">
         <div class="container">
             <div class="heading">
                 <div class="row justify-content-between align-items-end">
-                    <div class="col-12 col-lg-8 col-md-7">
+                    <div class="col-6 col-lg-7 col-md-7">
                         <div class="header-left-text">
                             <h3>Hotel Booking</h3>
                             {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
                                 Faux 3d elements and real-world textures mentally
                             </p> --}}
                         </div>
-                        <div class="header-checkbox">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                <label class="form-check-label" for="inlineCheckbox1">
-                                    I am Looking For an entire home or apartment
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">
-                                    I am Traveling For Work
-                                </label>
-                            </div>
-                        </div>
                     </div>
-                    <div class="col-lg-3 col-md-5 mt-5 mt-lg-0 mt-md-0">
-                        <div class="header-video">
-                            <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
-                            <div class="play-btn">
-                                <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                    href="{{ settings('hotel_video_link') }}">
-                                    <i class="fa-solid fa-play">
-                                    </i>
-                                </a>
+                    <div class="col-4 col-lg-5 col-md-5 mt-lg-0 mt-md-0">
+                        <div class="row align-items-lg-center justify-content-end">
+                            <div class="col-lg-6">
+                                <div class="header-video section-video">
+                                    <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
+                                    <div class="play-btn">
+                                        <a class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                            data-maxwidth="700px"
+                                            href="{{ settings('hotel_video_link') }}">
+                                            <i class="fa-solid fa-play"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="extra-btn">
+                                    <button class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                    data-maxwidth="700px" href="{{ settings('hotel_video_link') }}">Know More</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1001,13 +979,14 @@
                 <div class="col-lg-6 col-xl-5">
                     <div class="cv-right">
                         <h3>Grab Your Opportunity With Perfect CV</h3>
-                        <p>When the first iPhone launched, the idea of interacting with a small device using multi-touch
+                        <p>
+                            When the first iPhone launched, the idea of interacting with a small device using multi-touch
                             gestures was quite new. To make people more comfortable with the interface, the initial
                             designs used Skeuomorphism for the UI.
                         </p>
                         <div class="buttons">
                             <button onclick="location.href='{{ route('cv.builder') }}'">Create CV</button>
-                            <button>Order for Special CV</button>
+                            {{-- <button>Order for Special CV</button> --}}
                         </div>
                     </div>
                 </div>
@@ -1019,16 +998,13 @@
 
     <!-- Balance area start -->
 
-    <div class="balance-main">
+    {{-- <div class="balance-main">
         <div class="container">
             <div class="heading">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-6 col-md-7">
                         <div class="header-left-text">
                             <h3>Abroad to Abroad Balance Transfer For Emergency</h3>
-                            {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
-                                Faux 3d elements and real-world textures mentally down to the fact that we understand
-                            </p> --}}
                         </div>
                         <div class="buttons">
                             <button onclick="location.href='{{ route('user.balance.transfer') }}'">My Balance Transfer</button>
@@ -1037,13 +1013,13 @@
                     <div class="col-lg-2 col-md-4">
                         <div class="balance-right buttons">
                             <button onclick="location.href='{{ route('login') }}'">Login/Sign Up</button>
-                            <button>Help</button>
+                            <button onclick="location.href='{{ route('contact.us') }}'">Help</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Balance area end -->
 
@@ -1055,14 +1031,14 @@
                 <div class="col-lg-6">
                     <div class="banner2-left">
                         <h3>Let’s Contact Us For Any Inquiry</h3>
-                        <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
+                        {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
                             elements and real-world textures mentally clash with that flatness creating some dissonance.
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
                 <div class="col-lg-2 text-end">
                     <div class="buttons">
-                        <button>Contact Us</button>
+                        <button onclick="window.location='{{ route('contact.us') }}'">Contact Us</button>
                     </div>
                 </div>
             </div>

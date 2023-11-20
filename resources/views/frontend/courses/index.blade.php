@@ -1,25 +1,12 @@
 @include('frontend.courses.inc.asset')
 <div>
-    {{-- <section class="home-slide d-flex align-items-center">
-        <div class="container">
-            <div class="row ">
-                <div class="col-md-7">
-                    <div class="home-slide-face aos">
-                        <div class="home-slide-text ">
-                            <h5>The Leader in Online Learning</h5>
-                            <h1>Engaging &amp; Accessible Online Courses For All</h1>
-                            <p>Own your future learning new skills online</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-5 d-flex align-items-center">
-                    <div class="girl-slide-img aos"> <img src="{{ asset('frontend/courses') }}/images/object.png" alt=""> </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
     <section class="section how-it-works">
         <div class="container">
+            <div class="section-header aos pt-4">
+                <div class="section-sub-head">
+                    <h2>Course Categories</h2>
+                </div>
+            </div>
             <div class="owl-carousel mentoring-course owl-theme aos">
                 @foreach ($categories as $category)
                 <div class="feature-box text-center ">

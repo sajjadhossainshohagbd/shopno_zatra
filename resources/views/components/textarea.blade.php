@@ -56,5 +56,5 @@
 
 <div wire:ignore>
     <label class="form-label" class="control-label">{{ $attributes->get('label') }} @if(!$attributes->get('optional'))<small class="text text-danger">*</small> @endif</label> <br>
-    <textarea placeholder="{{  $attributes->get('placeholder')  }}" id="{{ $attributes->get('id') ?? $attributes->get('wire:model') }}" wire:model='{{ $attributes->get('wire:model') }}' cols="30" rows="{{ $attributes->get('rows') }}"></textarea>
+    <textarea placeholder="{{  $attributes->get('placeholder')  }}" name="{{  $attributes->get('name')  }}" id="{{ $attributes->get('id') ?? $attributes->get('wire:model') }}" wire:model='{{ $attributes->get('wire:model') }}' cols="30" rows="{{ $attributes->get('rows') }}">{!! $attributes->get('value') !!}</textarea>
 </div>

@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',App\Livewire\Frontend\Index::class)->name('home');
+Route::get('/contact-us',App\Livewire\Frontend\ContactUs::class)->name('contact.us');
+Route::get('/about-us',App\Livewire\Frontend\AboutUs::class)->name('about.us');
 
 // Hajj Details & Order
 Route::get('/{type}/package-details/{id}',App\Livewire\Frontend\Hajj\Details::class)->name('hajj.details');

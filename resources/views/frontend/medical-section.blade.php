@@ -1,50 +1,55 @@
-<div class="edu-main">
+<div class="edu-main" id="medical">
     <div class="container">
         <div class="heading">
             <div class="row justify-content-between align-items-center">
-                <div class="col-lg-6 col-md-7">
+                <div class="col-8 col-lg-6 col-md-7">
                     <div class="header-left-text">
                         <h3>Medical</h3>
                         {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
                             Faux 3d elements and real-world textures mentally
                         </p> --}}
-                        <div class="row">
-                            <div class="mt-4 col-6">
-                                <select wire:change='setCountry($event.target.value)' class="form-select custom-select">
-                                    <option value="" selected>Select Country</option>
-                                    @foreach ($countries as $country)
-                                    <option value="{{ $country }}">{{ $country }}</option>
-                                    @endforeach
-                                </select>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-5 col-md-5 mt-lg-0 mt-md-0">
+                    <div class="row align-items-lg-center justify-content-end">
+                        <div class="col-lg-6">
+                            <div class="header-video section-video">
+                                <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
+                                <div class="play-btn">
+                                    <a class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                        data-maxwidth="700px"
+                                        href="{{ settings('medical_video_link') }}">
+                                        <i class="fa-solid fa-play"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="mt-4 col-6">
-                                <select wire:change='setService($event.target.value)' class="form-select custom-select">
-                                    <option value="" selected>Work Related Service</option>
-                                    @foreach ($services as $service)
-                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
-                                    @endforeach
-                                </select>
-                                @if($service_id)
-                                <a href="{{ route('services.details',$service_id) }}" class="m-2 btn btn-primary text-white"><h6>View Details, Click here.</h6></a>
-                                @endif
+                            <div class="extra-btn">
+                                <button class="my-video-links" data-autoplay="true" data-vbtype="video"
+                                data-maxwidth="700px" href="{{ settings('medical_video_link') }}">Know More</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-5 mt-4 mt-lg-0 mt-md-0">
-                    <div class="header-video" >
-                        <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
-                        <div class="play-btn">
-                            <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                href="{{ settings('medical_video_link') }}">
-                                <i class="fa-solid fa-play">
-                                </i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="extra-btn">
-                        <button>Know More Service</button>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="mt-4 col-6">
+                    <select wire:change='setCountry($event.target.value)' class="form-select custom-select">
+                        <option value="" selected>Select Country</option>
+                        @foreach ($countries as $country)
+                        <option value="{{ $country }}">{{ $country }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mt-4 col-6">
+                    <select wire:change='setService($event.target.value)' class="form-select custom-select">
+                        <option value="" selected>Work Related Service</option>
+                        @foreach ($services as $service)
+                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                        @endforeach
+                    </select>
+                    @if($service_id)
+                    <a href="{{ route('services.details',$service_id) }}" class="m-2 btn btn-primary text-white"><h6>View Details, Click here.</h6></a>
+                    @endif
                 </div>
             </div>
         </div>
