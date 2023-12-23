@@ -42,7 +42,7 @@ class Order extends Component
             'guardian_phone' => 'required',
             'nid' => 'required|mimes:jpg',
             'passport' => 'required|mimes:jpg',
-            'payment_receipt' => 'nullable|mimes:jpg'
+            'payment_receipt' => 'nullable|mimes:jpg,jpeg'
         ]);
 
         $order = new HolidayOrder();
@@ -57,12 +57,14 @@ class Order extends Component
         $order->passport = $this->passport->store('uploads/passport','public');
         $order->payment_receipt = $this->payment_receipt?->store('uploads/payment_receipt','public');
 
-        if(auth()->user()->balance >= $this->order->price){
-            auth()->user()->decrement('balance',$this->order->price);
+        $price = auth()->user()->role == 'agent' ? $this->order->b2b_price : $this->order->price;
+        if(auth()->user()->balance >= $price){
+            auth()->user()->decrement('balance',$price);
             $order->payment_status = 'paid';
         }else{
             $order->payment_status = 'unpaid';
         }
+        $order->price = $price;
         $order->save();
 
         return to_route('holiday.details',$this->order->id)

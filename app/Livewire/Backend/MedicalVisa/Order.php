@@ -26,7 +26,7 @@ class Order extends Component
     public function render()
     {
         return view('backend.medical-visa.order',[
-        'orders' => MedicalOrder::latest()->paginate()
+            'orders' => MedicalOrder::latest()->paginate()
         ]);
     }
 }

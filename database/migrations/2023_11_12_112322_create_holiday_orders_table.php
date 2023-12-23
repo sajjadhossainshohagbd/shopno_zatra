@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('passport')->nullable();
             $table->text('payment_receipt')->nullable();
             $table->text('reason')->nullable();
+            $table->decimal('price');
             $table->enum('payment_status',['unpaid','paid']);
             $table->enum('status',['pending','processing','approved','cancelled'])->default('pending');
             $table->timestamps();

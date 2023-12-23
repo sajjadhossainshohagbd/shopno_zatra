@@ -18,6 +18,18 @@ class Index extends Component
         $this->type = request('type');
     }
 
+    public function delete($id)
+    {
+        $request = BalanceRequest::findOrFail($id);
+        @unlink(public_path($request->voucher));
+        $request->delete();
+
+        $this->dispatch('alert',[
+            'type' => 'success',
+            'message' => 'Request has been deleted!'
+        ]);
+    }
+
     #[Title('Balance Request')]
     public function render()
     {

@@ -30,7 +30,14 @@
                                         <img src="{{ $order->show_thumbnail }}" width="30%" class="img-thumbnail">
                                     </td>
                                     <td>{{ $order->name }}</td>
-                                    <td>{{ $order->price }} BDT</td>
+                                    <td>
+                                        @if(auth()->user()->role == 'agent')
+                                        <del><span><b>Original Price</b> : {{ $order->price }} BDT</span></del> <br>
+                                        <span><b>B2B Price</b> : {{ $order->b2b_price }} BDT</span> <br>
+                                        @else
+                                        {{ $order->price }} BDT
+                                        @endif
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

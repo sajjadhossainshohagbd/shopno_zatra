@@ -1293,6 +1293,9 @@ footer {
 .bg-app {
     background-color: #c9c226;
 }
+.text-app {
+    color: #c9c226;
+}
 .card-header {
     background-color: #c9c226;
     color: #fff;

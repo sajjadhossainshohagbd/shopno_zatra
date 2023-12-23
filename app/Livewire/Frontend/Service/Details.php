@@ -34,21 +34,7 @@ class Details extends Component
             return to_route('login');
         }
 
-        if($this->service->price > auth()->user()->balance) {
-            return to_route('services.details', $this->service->id)->with('error', 'Insufficient fund!');
-        }
-
-        $history = new BalanceCostHistory();
-        $history->user_id = auth()->id();
-        $history->service_id = $this->service->id;
-        $history->service_price = $this->service->price;
-        $history->payment_status = 'paid';
-        $history->status = 'pending';
-        $history->save();
-
-        Auth::user()->decrement('balance', $history->service_price);
-
-        return to_route('services.details', $this->service->id)->with('success', 'Service purchased successfully!');
+        return to_route('service.order', $this->service->id);
     }
 
     public function render()

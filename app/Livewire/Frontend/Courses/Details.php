@@ -28,7 +28,7 @@ class Details extends Component
         if(!auth()->check()){
             return to_route('login');
         }
-        
+
         $this->addToCart();
 
         $this->redirect(route('courses.checkout'));
@@ -39,6 +39,8 @@ class Details extends Component
         if(!auth()->check()){
             return to_route('login');
         }
+        
+        CourseCart::own()->delete();
 
         if(CourseCart::own()->where('course_id',$this->course->id)->first()){
 

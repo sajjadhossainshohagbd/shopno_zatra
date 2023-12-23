@@ -3,8 +3,9 @@
 namespace App\Livewire\Frontend;
 
 use App\Models\Service;
-use App\Models\WorkVisa;
 use Livewire\Component;
+use App\Models\WorkVisa;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 
 class WorkVisaSection extends Component
@@ -23,7 +24,7 @@ class WorkVisaSection extends Component
     public $current_country;
 
     public $service_id;
-
+    public $request_country;
 
     public function mount()
     {
@@ -36,6 +37,11 @@ class WorkVisaSection extends Component
     {
         $this->current_category = $category;
         $this->load();
+    }
+
+    public function setRequestCountry($value)
+    {
+        $this->request_country = $value;
     }
 
     public function setService($id)

@@ -24,6 +24,12 @@ class MyProfile extends Component
 
     public function mount()
     {
+        if(auth()->user()->role == 'admin' || auth()->user()->role == 'staff'){
+            $this->redirectRoute('admin.dashboard');
+        }elseif(auth()->user()->role == 'agent'){
+            $this->redirect(route('b2b.dashboard'));
+        }
+
         $this->name = auth()->user()->name;
         $this->phone = auth()->user()->phone;
         $this->email = auth()->user()->email;

@@ -22,6 +22,7 @@ class HolidaySection extends Component
     #[Locked]
     public $current_program;
     public $current_country;
+    public $request_country;
 
     public $service_id;
 
@@ -42,6 +43,12 @@ class HolidaySection extends Component
     public function setService($id)
     {
         $this->service_id = $id;
+    }
+
+
+    public function setRequestCountry($country)
+    {
+        $this->request_country = $country;
     }
 
     public function setCountry($country)

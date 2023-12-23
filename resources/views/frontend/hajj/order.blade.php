@@ -30,7 +30,14 @@
                                         <img src="{{ $hajj->show_thumbnail }}" width="30%" class="img-thumbnail">
                                     </td>
                                     <td>{{ $hajj->package_name }}</td>
-                                    <td>{{ $hajj->start_from }} BDT</td>
+                                    <td>
+                                        @if(auth()->user()->role == 'agent')
+                                        <del><span><b>Original Price</b> : {{ $hajj->start_from }} BDT</span></del> <br>
+                                        <span><b>B2B Price</b> : {{ $hajj->b2b_price }} BDT</span> <br>
+                                        @else
+                                        {{ $hajj->start_from }} BDT
+                                        @endif
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

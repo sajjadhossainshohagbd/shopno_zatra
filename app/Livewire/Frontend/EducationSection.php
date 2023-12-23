@@ -24,6 +24,7 @@ class EducationSection extends Component
     public $current_country;
 
     public $service_id;
+    public $request_country;
 
 
     public function mount()
@@ -42,6 +43,11 @@ class EducationSection extends Component
     public function setService($id)
     {
         $this->service_id = $id;
+    }
+
+    public function setRequestCountry($country)
+    {
+        $this->request_country = $country;
     }
 
     public function setCountry($country)

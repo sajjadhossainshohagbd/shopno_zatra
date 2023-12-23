@@ -4,7 +4,7 @@
 <div class="login-wrapper">
     <div class="loginbox">
         <div class="col-md-6 m-auto">
-            <h1 class="text-center">Log In</h1>
+            <h1 class="text-center"> Log In</h1>
 
             <form wire:submit='login'>
                 @if(session('status'))
@@ -55,7 +55,7 @@
             </ul>
         </div> --}}
         <p class="mb-4">New User ?
-            <a href="{{ route('register') }}">Create an Account</a>
+            <a href="{{ route('register') }}" class="text-danger">Create an Account</a>
         </p>
     </div>
 </div>

@@ -49,7 +49,6 @@ class OrderDetails extends Component
         $this->order->reason = $this->reason;
         $this->order->save();
 
-
         $this->dispatch('alert',[
             'type' => 'success',
             'message' => 'Message saved!'

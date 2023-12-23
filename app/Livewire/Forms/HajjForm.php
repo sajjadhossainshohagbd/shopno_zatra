@@ -10,7 +10,7 @@ class HajjForm extends Form
 {
     #[Rule('required')]
     public $package_name;
-    
+
     #[Rule('required')]
     public $terms_condition;
 
@@ -25,5 +25,8 @@ class HajjForm extends Form
 
     #[Rule('required')]
     public $start_from;
+    
+    #[Rule('required')]
+    public $b2b_price;
 
 }

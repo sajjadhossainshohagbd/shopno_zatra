@@ -16,6 +16,41 @@
                 </div>
             </div>
         </div>
+        {{-- <h2 class="text-center">Income</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Today</h4>
+                        <h6>BDT 250</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Tomorrow</h4>
+                        <h6>BDT 2500</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Last 7 Days</h4>
+                        <h6>BDT 250</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Last 30 Days</h4>
+                        <h6>10</h6>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
 
     </div>
 </div>

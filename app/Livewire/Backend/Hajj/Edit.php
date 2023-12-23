@@ -32,6 +32,9 @@ class Edit extends Component
     #[Rule('required')]
     public $start_from;
 
+    #[Rule('required')]
+    public $b2b_price;
+
     #[Locked]
     public $hajj;
 
@@ -43,6 +46,7 @@ class Edit extends Component
         $this->description = $hajj->description;
         $this->terms_condition = $hajj->terms_condition;
         $this->type = $hajj->type;
+        $this->b2b_price = $hajj->b2b_price;
         $this->start_from = $hajj->start_from;
     }
 
@@ -60,6 +64,7 @@ class Edit extends Component
             $hajj->thumbnail = $this->thumbnail->store('uploads/packages/hajj/thumbnail', 'public');
         }
         $hajj->start_from = $this->start_from;
+        $hajj->b2b_price = $this->b2b_price;
         $hajj->save();
 
         return to_route('hajj.index')->with('success', 'Package updated successfully!');

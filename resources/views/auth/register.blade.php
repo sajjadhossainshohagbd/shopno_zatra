@@ -3,7 +3,7 @@
 @endpush
 <div class="login-wrapper">
     <div class="loginbox">
-        <div class="col-md-8 mx-auto">
+        <div class="col-md-6 mx-auto">
             <h1 class="text-center">Create Account</h1>
 
             <form wire:submit='register'>

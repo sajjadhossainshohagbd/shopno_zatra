@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('voucher');
             $table->string('transaction_id');
             $table->text('message')->nullable();
-            $table->string('document');
+            $table->string('document')->nullable();
             $table->enum('status',['pending','approved','cancelled'])->default('pending');
             $table->timestamps();
         });

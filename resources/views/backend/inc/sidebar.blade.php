@@ -42,6 +42,23 @@
                 <li class="menu-title">Management</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="uil-file-alt"></i>
+                        <span>Accounts Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('accounts.courses') }}">Courses</a></li>
+                        <li><a href="{{ route('accounts.hajj.visa') }}">Hajj Visa</a></li>
+                        <li><a href="{{ route('accounts.work.visa') }}">Work Visa</a></li>
+                        <li><a href="{{ route('accounts.education.visa') }}">Education Visa</a></li>
+                        <li><a href="{{ route('accounts.medical.visa') }}">Medical Visa</a></li>
+                        <li><a href="{{ route('accounts.holiday.pack') }}">Holiday Pack</a></li>
+                        <li><a href="{{ route('accounts.buyer') }}">Buyers</a></li>
+                        <li><a href="{{ route('accounts.agent') }}">Agents</a></li>
+                        <li><a href="{{ route('accounts.customer') }}">Customers</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fa fa-video"></i>
                         <span>Course Management</span>
                     </a>
@@ -77,6 +94,7 @@
                         <li><a href="{{ route('services.index','work_visa') }}">Service List</a></li>
                         <li><a href="{{ route('work.visa.orders') }}">Orders</a></li>
                         <li><a href="{{ route('services.orders','work_visa') }}">Service Orders</a></li>
+                        <li><a href="{{ route('work.visa.request.history') }}">Request History</a></li>
 
                     </ul>
                 </li>
@@ -91,7 +109,7 @@
                         <li><a href="{{ route('services.index','education_visa') }}">Service List</a></li>
                         <li><a href="{{ route('education.visa.orders') }}">Orders</a></li>
                         <li><a href="{{ route('services.orders','education_visa') }}">Service Orders</a></li>
-
+                        <li><a href="{{ route('education.visa.request.history') }}">Request History</a></li>
                     </ul>
                 </li>
 
@@ -105,7 +123,7 @@
                         <li><a href="{{ route('services.index','medical_visa') }}">Service List</a></li>
                         <li><a href="{{ route('medical.visa.orders') }}">Orders</a></li>
                         <li><a href="{{ route('services.orders','medical_visa') }}">Service Orders</a></li>
-
+                        <li><a href="{{ route('medical.visa.request.history') }}">Request History</a></li>
                     </ul>
                 </li>
                 <li>
@@ -118,7 +136,64 @@
                         <li><a href="{{ route('services.index','holiday_package') }}">Service List</a></li>
                         <li><a href="{{ route('holiday.orders') }}">Orders</a></li>
                         <li><a href="{{ route('services.orders','holiday_package') }}">Service Orders</a></li>
+                        <li><a href="{{ route('holiday.request.history') }}">Request History</a></li>
+                    </ul>
+                </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-award"></i>
+                        <span>Agent Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('agent.index') }}">Agent List</a></li>
+                        <li><a href="{{ route('agent.request.list') }}">Agent Request List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-store"></i>
+                        <span>Buyer Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('buyer.index') }}">Buyer List</a></li>
+                        <li><a href="{{ route('buyer.request.list') }}">Buyer Request List</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-users"></i>
+                        <span>Worker Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('worker.index') }}">Worker List</a></li>
+                        <li><a href="{{ route('worker.request.list') }}">Worker Request List</a></li>
+                        <li><a href="{{ route('worker.buyer.requests') }}">Buyer Requests</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-passport"></i>
+                        <span>Korea Visa Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('korea.visa.user.list') }}">User List</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="has-arrow waves-effect">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Marketing Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('marketing.index',['type' => 'seo']) }}">Search Engine Optimization</a></li>
+                        <li><a href="{{ route('marketing.index',['type' => 'google_ads']) }}">Google Ads </a></li>
+                        <li><a href="{{ route('marketing.index',['type' => 'fb_ads']) }}">Facebook Ads </a></li>
+                        <li><a href="{{ route('marketing.index',['type' => 'youtube_ads']) }}">Youtube Ads</a></li>
+                        <li><a href="{{ route('marketing.index',['type' => 'making']) }}">Video & Graphics Making</a></li>
                     </ul>
                 </li>
 
@@ -136,13 +211,37 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fa fa-university"></i>
-                        <span>Balance Request</span>
+                        <span>Balance Requests</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{ route('balance.request.index') }}">All Request List</a></li>
                         <li><a href="{{ route('balance.request.index',['type' => 'pending']) }}">Pending Request List</a></li>
                         <li><a href="{{ route('balance.request.index',['type' => 'approved']) }}">Approved Request List</a></li>
                         <li><a href="{{ route('balance.request.index',['type' => 'cancelled']) }}">Cancelled Request List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-random"></i>
+                        <span>Balance Transfer Requests</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('balance.transfer.index') }}">All Request List</a></li>
+                        <li><a href="{{ route('balance.transfer.index',['type' => 'pending']) }}">Pending Request List</a></li>
+                        <li><a href="{{ route('balance.transfer.index',['type' => 'approved']) }}">Approved Request List</a></li>
+                        <li><a href="{{ route('balance.transfer.index',['type' => 'cancelled']) }}">Cancelled Request List</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-paper-plane"></i>
+                        <span>Balance Withdraw Requests</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('balance.withdraw.index') }}">All Request List</a></li>
+                        <li><a href="{{ route('balance.withdraw.index',['type' => 'pending']) }}">Pending Request List</a></li>
+                        <li><a href="{{ route('balance.withdraw.index',['type' => 'approved']) }}">Approved Request List</a></li>
+                        <li><a href="{{ route('balance.withdraw.index',['type' => 'cancelled']) }}">Cancelled Request List</a></li>
                     </ul>
                 </li>
 

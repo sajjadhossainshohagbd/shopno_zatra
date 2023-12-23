@@ -25,6 +25,7 @@
                             <th>Category</th>
                             <th>Process Days</th>
                             <th>Price</th>
+                            <th>B2B Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                             <td>{{ $work->category }}</td>
                             <td>{{ $work->process_days }}</td>
                             <td>{{ $work->price }}</td>
+                            <td>{{ $work->b2b_price }}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">

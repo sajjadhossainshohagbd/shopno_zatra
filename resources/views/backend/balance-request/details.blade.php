@@ -110,7 +110,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <label>Update Status</label>
-                            <select class="form-select" wire:change='updateStatus($event.target.value)' @disabled($balance->status == 'approved')>
+                            <select class="form-select" wire:confirm='Are you sure?' wire:change='updateStatus($event.target.value)' @disabled($balance->status == 'approved')>
                                 <option value="pending" @selected($balance->status == 'pending')>Pending</option>
                                 <option value="approved" @selected($balance->status == 'approved')>Approved</option>
                                 <option value="cancelled" @selected($balance->status == 'cancelled')>Cancelled</option>

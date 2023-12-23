@@ -560,14 +560,6 @@
                     <div class="col-6 col-lg-7 col-md-6">
                         <div class="header-left-text">
                             <h3> Visa</h3>
-                            {{-- <div class="nice-select">
-                                <span class="current">Select Country</span>
-                                <ul class="list">
-                                    <li data-value="1" class="option">Bangladesh</li>
-                                    <li data-value="2" class="option">India</li>
-                                    <li data-value="4" class="option">Sudia Arab</li>
-                                </ul>
-                            </div> --}}
                         </div>
                     </div>
                     <div class="col-6 col-lg-5 col-md-6 mt-lg-0 mt-md-0 ms-auto">
@@ -998,7 +990,7 @@
 
     <!-- Balance area start -->
 
-    {{-- <div class="balance-main">
+    <div class="balance-main">
         <div class="container">
             <div class="heading">
                 <div class="row justify-content-between align-items-center">
@@ -1019,7 +1011,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <!-- Balance area end -->
 

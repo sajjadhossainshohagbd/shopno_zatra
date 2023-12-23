@@ -47,7 +47,7 @@
                             <a class="nav-link bg-app text-white me-1" aria-current="page" href="#">Inbox</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-app text-white me-1" href="{{ route('about.us') }}">About</a>
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('about.us') }}">About Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link bg-app text-white me-1" href="#">News Media</a>
@@ -55,8 +55,13 @@
                         <li class="nav-item">
                             <a class="nav-link bg-app text-white me-1" href="{{ route('courses') }}">Courses</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link bg-app text-white me-1" href="{{ route('login') }}">Login</a>
+                            @auth
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('user.my.profile') }}">My Dashboard</a>
+                            @else
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('partner.login') }}"> Partner Login</a>
+                            @endauth
                         </li>
                     </ul>
                 </div>
@@ -72,7 +77,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             @auth
-                            <a href="{{ route('my.profile') }}" class="accordion-button single-link collapsed" style=".accordion-button::after {}">Inbox</a>
+                            <a href="{{ route('user.my.profile') }}" class="accordion-button single-link collapsed" style=".accordion-button::after {}">Inbox</a>
                             @else
                             <a href="{{ route('login') }}" class="accordion-button single-link collapsed">Inbox</a>
                             @endauth
@@ -96,7 +101,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             @auth
-                            <a href="{{ route('my.profile') }}" class="accordion-button single-link collapsed">My Dashboard</a>
+                            <a href="{{ route('user.my.profile') }}" class="accordion-button single-link collapsed">My Dashboard</a>
                             @else
                             <a href="{{ route('login') }}" class="accordion-button single-link collapsed">Log In</a>
                             @endauth
@@ -182,7 +187,7 @@
 
     <!-- Footer area start -->
 
-    <footer>
+    {{-- <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -190,6 +195,7 @@
                         <ul>
                             <li><a href="{{ route('about.us') }}"> About Us </a></li>
                             <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
+                            <li><a href="{{ url('shopnozatra.apk') }}" download>Download App</a></li>
                         </ul>
                     </div>
                 </div>
@@ -227,6 +233,72 @@
                     <div class="copyright ">
                         <p> Copyright <i class="fa-regular fa-copyright"></i> {{ date('Y') }} . Shopno Zatra. All Right Reserved</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </footer> --}}
+
+    <footer>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="">
+                    <p class="pt-3">
+                        Shopno Zatra is the country’s first and leading online travel aggregator (OTA). Since our inception, we have dreamt of making travel easier for people of all ages and we move forward to make that dream into reality.
+                    </p>
+                </div>
+                <div class="col-md-2 col-sm-3">
+                    <h6><b>Explore</b></h6>
+                    <ul class="mt-3">
+                        <li class="mb-2"><a href="" class="nav-link">About Us</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Contact Us</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-3">
+                    <h6><b>Services</b></h6>
+                    <ul class="mt-3">
+                        <li class="mb-2"><a href="" class="nav-link">Flight</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Hotel</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Holiday</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Visa</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                    <h6><b>Useful Links</b></h6>
+                    <ul class="mt-3">
+                        <li class="mb-2"><a href="" class="nav-link">Travel guide</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Travel adviosry</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Visa Guide</a></li>
+                        <li class="mb-2"><a href="" class="nav-link">Visa Application</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <h6><b>Payment Method</b></h6>
+                    <img src="{{ asset('frontend/images/payment.png') }}" width="200">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-3">
+                    <h6 class="mb-3"><b>Contact Us</b></h6>
+                    <span class="mb-2"><b>Email :</b> <a href="mailto:info@shopnozatra.com">info@shopnozatra.com</a></span> <br>
+                    <span class="mb-2"><b>Phone :</b> <a href="tel:01700000000">01700000000</a></span> <br>
+                    <span class="mb-2"><b>WhatsApp :</b> <a href="https://api.whatsapp.com/send/?phone=&text&type=phone_number&app_absent=0">Message Us</a></span>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="mb-3"><b>Dhaka Office</b></h6>
+                    <p>
+                        Kazipara, Mirpur-10, Dhaka 1213, Bangladesh.
+                    </p>
+                    <a href="" class="m-2"><i class="fa fa-location-dot text-app"></i> View Map</a>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <div class="copyright ">
+                    <p> Copyright <i class="fa-regular fa-copyright"></i> {{ date('Y') }} . Shopno Zatra. All Right Reserved</p>
                 </div>
             </div>
         </div>

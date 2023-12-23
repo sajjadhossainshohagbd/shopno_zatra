@@ -1,8 +1,8 @@
 @push('css')
 <link rel="stylesheet" href="{{ asset('frontend/courses') }}/css/style.css">
 @endpush
-<div class="login-wrapper">
-    <div class="loginbox">
+<div class="login-wrapper mt-2">
+    <div class="col-md-6 mx-auto">
         <h1>Reset Password</h1>
         <div class="reset-password">
             <p>Enter your new password and type again confirm password.</p>

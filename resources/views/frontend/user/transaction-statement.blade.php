@@ -29,12 +29,8 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Date</th>
-                                                <th>Amount</th>
-                                                <th>Sender</th>
                                                 <th>Purpose</th>
-                                                <th>Receiver Account</th>
-                                                <th>Status</th>
-                                                <th>Received Date</th>
+                                                <th>Amount</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,28 +38,8 @@
                                             <tr>
                                                 <td>{{ $transactions->firstItem() + $loop->index }}</td>
                                                 <td>{{ $transaction->created_at->format('d M Y h:i A') }}</td>
-                                                <td>{{ $transaction->amount }}</td>
-                                                <td>
-                                                    <span>Name : {{ $transaction->user?->name }}</span>  <br>
-                                                    <span>Phone : {{ $transaction->user?->phone }}</span>
-                                                </td>
-                                                <td>{{ $transaction->purpose }}</td>
-                                                <td>{{ $transaction->account_number }}</td>
-                                                <td>
-                                                    <span @class([
-                                                        'badge',
-                                                        'badge-success' => $transaction->status == 'approved',
-                                                        'badge-info' => $transaction->status == 'pending',
-                                                        'badge-danger' => $transaction->status == 'cancelled',
-                                                    ])>{{ ucfirst($transaction->status) }}</span>
-                                                </td>
-                                                <td>
-                                                    @if($transaction->status == 'approved')
-                                                    {{ $transaction->updated_at->format('d M Y h:i A') }}
-                                                    @else
-                                                    <span class="badge badge-warning">Waiting for approval</span>
-                                                    @endif
-                                                </td>
+                                                <td>{{ ucwords(str_replace('_',' ',$transaction->type)) }}</td>
+                                                <td class="{{ $transaction->type == 'add_balance' || $transaction->type == 'add_balance_for_korea_visa' ? 'text-success' : 'text-danger' }}"> {{ $transaction->type == 'add_balance' || $transaction->type == 'add_balance_for_korea_visa' ? '+' : '-' }} {{ $transaction->price }} BDT</td>
                                             </tr>
                                             @empty
                                             <td colspan="8" class="text-center">No Statement Found!</td>

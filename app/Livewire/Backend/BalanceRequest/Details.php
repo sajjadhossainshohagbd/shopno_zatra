@@ -25,7 +25,11 @@ class Details extends Component
         $balance->save();
 
         if($status == 'approved'){
-            $balance->user?->increment('balance',$this->balance->amount);
+            if($balance->type == 'balance'){
+                $balance->user?->increment('balance',$this->balance->amount);
+            }elseif($balance->type == 'deposit'){
+                $balance->user?->increment('course_balance',$this->balance->amount);
+            }
         }
 
         $this->dispatch('alert',[

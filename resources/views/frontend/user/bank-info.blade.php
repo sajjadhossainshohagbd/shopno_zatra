@@ -8,7 +8,6 @@
                     <div class="checkout-form personal-address add-course-info ">
                         <div class="personal-info-head">
                             <h4>Bank Info</h4>
-                            <p></p>
                         </div>
                     </div>
                     <div class="row justify-content-center m-1">

@@ -19,4 +19,13 @@ class BalanceTransfer extends Model
     {
         return $this->hasOne(User::class,'id','user_id');
     }
+
+    public function bank()
+    {
+        return $this->hasOne(BankInfo::class,'id','bank_id');
+    }
+
+    protected $casts = [
+        'date_of_payment' => 'date'
+    ];
 }

@@ -15,6 +15,7 @@ class Edit extends Component
     public $description;
     public $thumbnail;
     public $price;
+    public $b2b_price;
     public $country;
     public $category;
     public $terms_condition;
@@ -30,6 +31,7 @@ class Edit extends Component
         $this->country = $this->work->country;
         $this->process_days = $this->work->process_days;
         $this->price = $this->work->price;
+        $this->b2b_price = $this->work->b2b_price;
         $this->terms_condition = $this->work->terms_condition;
     }
 
@@ -41,6 +43,7 @@ class Edit extends Component
             'description' => 'required',
             'terms_condition' => 'required',
             'price' => 'required',
+            'b2b_price' => 'required',
             'thumbnail' => 'nullable|mimes:jpg,jpeg,png',
             'process_days' => 'required'
         ]);
@@ -56,6 +59,7 @@ class Edit extends Component
             $work->thumbnail = $this->thumbnail->store('uploads/packages/work/thumbnail', 'public');
         }
         $work->price = $this->price;
+        $work->b2b_price = $this->b2b_price;
         $work->save();
 
         return to_route('work.visa.index')->with('success', 'Package updated successfully!');

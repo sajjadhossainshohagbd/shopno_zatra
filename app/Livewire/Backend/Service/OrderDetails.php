@@ -3,6 +3,7 @@
 namespace App\Livewire\Backend\Service;
 
 use App\Models\BalanceCostHistory;
+use App\Models\ServiceOrder;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Locked;
@@ -16,7 +17,7 @@ class OrderDetails extends Component
 
     public function mount($id)
     {
-        $this->order = BalanceCostHistory::findOrFail($id);
+        $this->order = ServiceOrder::findOrFail($id);
         $this->reason = $this->order->reason;
     }
 

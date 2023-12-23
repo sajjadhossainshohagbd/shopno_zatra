@@ -3,6 +3,7 @@
 namespace App\Livewire\Backend\Service;
 
 use App\Models\BalanceCostHistory;
+use App\Models\ServiceOrder;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\WithPagination;
@@ -29,7 +30,10 @@ class Orders extends Component
 
     public function delete($id)
     {
-        $order = BalanceCostHistory::findOrFail($id);
+        $order = ServiceOrder::findOrFail($id);
+        @unlink(public_path($order->nid));
+        @unlink(public_path($order->passport));
+        @unlink(public_path($order->payment_receipt));
         $order->delete();
 
         $this->dispatch('alert',[
@@ -42,7 +46,7 @@ class Orders extends Component
     public function render()
     {
         return view('backend.service.orders',[
-            'orders' => BalanceCostHistory::with('service','user')->whereHas('service',function($query){
+            'orders' => ServiceOrder::with('service','user')->whereHas('service',function($query){
                 $query->where('type',$this->type);
             })->latest()->paginate()
         ]);

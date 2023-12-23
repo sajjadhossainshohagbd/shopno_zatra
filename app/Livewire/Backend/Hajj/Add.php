@@ -23,6 +23,7 @@ class Add extends Component
         $hajj->description = $this->form->description;
         $hajj->terms_condition = $this->form->terms_condition;
         $hajj->type = $this->form->type;
+        $hajj->b2b_price = $this->form->b2b_price;
         $hajj->thumbnail = $this->form->thumbnail->store('uploads/packages/hajj/thumbnail', 'public');
         $hajj->start_from = $this->form->start_from;
         $hajj->save();

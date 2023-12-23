@@ -5,8 +5,6 @@
                 <div class="col-8 col-lg-6 col-md-7">
                     <div class="header-left-text">
                         <h3>Work Visa</h3>
-                        {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
-                            Faux 3d elements and real-world textures mentally</p> --}}
                     </div>
                 </div>
                 <div class="col-4 col-lg-5 col-md-5 mt-lg-0 mt-md-0">
@@ -32,12 +30,15 @@
             </div>
             <div class="row">
                 <div class="mt-4 col-6">
-                    <select wire:change='setCountry($event.target.value)' class="form-select custom-select">
+                    <select wire:change='setRequestCountry($event.target.value)' class="form-select custom-select">
                         <option value="" selected>Select Country</option>
                         @foreach ($countries as $country)
                         <option value="{{ $country }}">{{ $country }}</option>
                         @endforeach
                     </select>
+                    @if($request_country)
+                    <a href="{{ route('work.visa.job.request',encrypt($request_country)) }}" class="m-2 btn btn-success text-white"><h6>Job Request, Click here.</h6></a>
+                    @endif
                 </div>
                 <div class="mt-4 col-6">
                     <select wire:change='setService($event.target.value)' class="form-select custom-select">
@@ -52,15 +53,6 @@
                 </div>
             </div>
         </div>
-        <div class="hajj-selector">
-            <ul class="nav nav-pills mb-3">
-                @foreach ($categories as $category)
-                <li class="nav-item" role="presentation" wire:click="switchTab('{{ $category }}')">
-                    <button class="nav-link {{ $current_category == $category ? 'active' : '' }}">{{ $category }}</button>
-                </li>
-                @endforeach
-            </ul>
-        </div>
         <div class="get-offer">
             <div class="container">
                 <div class="row">
@@ -70,6 +62,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="hajj-selector">
+                    <ul class="nav nav-pills mb-3">
+                        @foreach ($categories as $category)
+                        <li class="nav-item" role="presentation" wire:click="switchTab('{{ $category }}')">
+                            <button class="nav-link {{ $current_category == $category ? 'active' : '' }}">{{ $category }}</button>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @if($current_category)
+                <div class="mt-4 col-6">
+                    <select wire:change='setCountry($event.target.value)' class="form-select custom-select">
+                        <option value="" selected>All Country</option>
+                        @foreach ($countries as $country)
+                        <option value="{{ $country }}">{{ $country }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @endif
                 <div class="row mt-3 offer-slider">
                     @foreach ($works as $work)
                     <div class="col-lg-4">

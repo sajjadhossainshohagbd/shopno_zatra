@@ -26,7 +26,7 @@
                         <tr wire:key='{{ $order->id }}'>
                             <th scope="row">{{ $orders->firstItem() + $loop->index }}</th>
                             <td>
-                                <a href="{{ route('holiday.details',$order->service_id) }}" target="_blank">
+                                <a href="{{ route('services.details',$order->service_id) }}" target="_blank">
                                     {{ $order->service?->name ?? '--' }}
                                 </a>
                             </td>
@@ -48,8 +48,9 @@
                                     "bg-info" => $order->status == 'pending',
                                     "bg-primary" => $order->status == 'processing',
                                 ])>
-                                    {{ ucfirst($order->status) }}
+                                {{ ucfirst($order->status) }}
                                 </div>
+
                             </td>
                             <td>
                                 <ul class="list-inline mb-0">

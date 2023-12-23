@@ -20,7 +20,7 @@ class Register extends Component
 
     public function register()
     {
-        $validated = $this->validate([
+        $this->validate([
             'name'    => 'required|string',
             'email'         => 'required|email:filter|unique:users,email',
             'phone'         => 'required|min:11|unique:users,phone',

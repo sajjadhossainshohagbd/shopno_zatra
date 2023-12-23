@@ -24,6 +24,7 @@
                             <th>Country</th>
                             <th>Program</th>
                             <th>Price</th>
+                            <th>B2B Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,6 +45,7 @@
                             <td>{{ $medi->country }}</td>
                             <td>{{ $medi->program }}</td>
                             <td>{{ $medi->price }}</td>
+                            <td>{{ $medi->b2b_price }}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">

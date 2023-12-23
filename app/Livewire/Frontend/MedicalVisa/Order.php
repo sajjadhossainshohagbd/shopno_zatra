@@ -57,13 +57,14 @@ class Order extends Component
         $order->nid = $this->nid->store('uploads/nid','public');
         $order->passport = $this->passport->store('uploads/passport','public');
         $order->payment_receipt = $this->payment_receipt?->store('uploads/payment_receipt','public');
-
-        if(auth()->user()->balance >= $this->visa->price){
-            auth()->user()->decrement('balance',$this->visa->price);
+        $price = auth()->user()->role == 'agent' ? $this->visa->b2b_price : $this->visa->price;
+        if(auth()->user()->balance >= $price){
+            auth()->user()->decrement('balance',$price);
             $order->payment_status = 'paid';
         }else{
             $order->payment_status = 'unpaid';
         }
+        $order->price = $price;
         $order->save();
 
         return to_route('medical.visa.details',$this->visa->id)

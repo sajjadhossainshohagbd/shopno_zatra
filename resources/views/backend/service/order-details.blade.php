@@ -26,7 +26,6 @@
                                 </div>
                             </td>
                         </tr>
-
                         <tr>
                             <th>Status :</th>
                             <td>
@@ -41,6 +40,28 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <th>NID :</th>
+                            <td>
+                                <a href="{{ asset($order->nid) }}" target="_blank">Click here to view</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Passport :</th>
+                            <td>
+                                <a href="{{ asset($order->passport) }}" target="_blank">Click here to view</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Payment Receipt :</th>
+                            <td>
+                                @if($order->payment_receipt != null)
+                                <a href="{{ asset($order->payment_receipt) }}" target="_blank">Click here to view</a>
+                                @else
+                                --
+                                @endif
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="col-md-6">
@@ -48,18 +69,26 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>Name :</th>
-                            <td>{{ $order->user?->name }}</td>
+                            <td>{{ $order->name }}</td>
                         </tr>
                         <tr>
                             <th>Phone :</th>
-                            <td>{{ $order->user?->phone }}</td>
+                            <td>{{ $order->phone }}</td>
                         </tr>
                         <tr>
-                            <th>Email Address :</th>
-                            <td>{{ $order->user?->email }}</td>
+                            <th>Guardian Name :</th>
+                            <td>{{ $order->guardian_name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Guardian Phone :</th>
+                            <td>{{ $order->guardian_phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>Address :</th>
+                            <td>{{ $order->address }}</td>
                         </tr>
                     </table>
-
+                    
                 </div>
                 <div class="col-md-12 p-4">
                     <div class="row justify-content-center">

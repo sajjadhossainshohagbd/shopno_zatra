@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Illuminate\Auth\Events\Lockout;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
@@ -37,21 +39,34 @@ class Login extends Component
 
         $credentials[$fieldName] = $this->email;
 
-        if (!auth()->attempt($credentials, $this->remember)) {
+        $user = User::whereIn('role',['admin','staff','user'])->where($fieldName,$this->email)->first();
+
+        if($user && Hash::check($this->password,$user->password)){
+            auth()->attempt($credentials, $this->remember);
+        }elseif($user && !Hash::check($this->password,$user->password)){
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'password' => trans('auth.password'),
+            ]);
+        }else{
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
             ]);
         }
-
         RateLimiter::clear($this->throttleKey());
 
         session()->regenerate();
 
+        $role = auth()->user()->role;
+
+        $route = $role == 'admin' || $role == 'staff' ? route('admin.dashboard') : route('user.my.profile');
+
         $this->redirect(
-            route('user.my.profile')
-        );
+            $route
+        ); 
     }
 
     protected function ensureIsNotRateLimited(): void

@@ -15,6 +15,7 @@ class Edit extends Component
     public $description;
     public $thumbnail;
     public $price;
+    public $b2b_price;
     public $country;
     public $program;
     public $terms_condition;
@@ -29,6 +30,7 @@ class Edit extends Component
         $this->program = $this->medical->program;
         $this->country = $this->medical->country;
         $this->price = $this->medical->price;
+        $this->b2b_price = $this->medical->b2b_price;
         $this->terms_condition = $this->medical->terms_condition;
     }
 
@@ -41,6 +43,7 @@ class Edit extends Component
             'program' => 'required',
             'terms_condition' => 'required',
             'price' => 'required',
+            'b2b_price' => 'required',
             'thumbnail' => 'nullable|mimes:jpg,jpeg,png',
         ]);
 
@@ -55,6 +58,7 @@ class Edit extends Component
             $edu->thumbnail = $this->thumbnail->store('uploads/packages/medical/thumbnail', 'public');
         }
         $edu->price = $this->price;
+        $edu->b2b_price = $this->b2b_price;
         $edu->save();
 
         return to_route('medical.visa.index')->with('success', 'Package updated successfully!');

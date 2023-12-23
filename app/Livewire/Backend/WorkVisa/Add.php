@@ -15,6 +15,7 @@ class Add extends Component
     public $description;
     public $thumbnail;
     public $price;
+    public $b2b_price;
     public $country;
     public $category;
     public $terms_condition;
@@ -28,6 +29,7 @@ class Add extends Component
             'description' => 'required',
             'terms_condition' => 'required',
             'price' => 'required',
+            'b2b_price' => 'required',
             'thumbnail' => 'required|mimes:jpg,jpeg,png',
             'process_days' => 'required'
         ]);
@@ -41,6 +43,7 @@ class Add extends Component
         $work->terms_condition = $this->terms_condition;
         $work->thumbnail = $this->thumbnail->store('uploads/packages/work/thumbnail', 'public');
         $work->price = $this->price;
+        $work->b2b_price = $this->b2b_price;
         $work->save();
 
         return to_route('work.visa.index')->with('success', 'Package added successfully!');

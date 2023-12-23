@@ -71,6 +71,14 @@
                             @enderror
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label" for="b2b_price">B2B Price <small class="text text-danger">*</small></label>
+                            <input id="b2b_price" wire:model="b2b_price" type="number" class="form-control @error('b2b_price') is-invalid @enderror" placeholder="Enter b2b price">
+                            @error('b2b_price')
+                                <div class="text text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="text-center">
                             <button type="submit" class="btn btn-success btn-rounded" wire:loading.attr='disabled'>Add Package</button>
                         </div>

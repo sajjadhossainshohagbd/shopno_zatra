@@ -15,6 +15,7 @@ class Add extends Component
     public $description;
     public $thumbnail;
     public $price;
+    public $b2b_price;
     public $country;
     public $program;
     public $terms_condition;
@@ -28,6 +29,7 @@ class Add extends Component
             'description' => 'required',
             'terms_condition' => 'required',
             'price' => 'required',
+            'b2b_price' => 'required',
             'thumbnail' => 'required|mimes:jpg,jpeg,png'
         ]);
 
@@ -39,6 +41,7 @@ class Add extends Component
         $medical->terms_condition = $this->terms_condition;
         $medical->thumbnail = $this->thumbnail->store('uploads/packages/medical/thumbnail', 'public');
         $medical->price = $this->price;
+        $medical->b2b_price = $this->b2b_price;
         $medical->save();
 
         return to_route('medical.visa.index')->with('success', 'Package added successfully!');

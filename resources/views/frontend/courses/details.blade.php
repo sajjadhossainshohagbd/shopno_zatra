@@ -114,8 +114,8 @@
                                             <h2>৳{{ round($course->price) }}</h2>
                                         </div>
                                         @if(!$isEnrolled)
-                                        <button wire:click="addToCart()" class="btn btn-wish w-100"><i class="feather-heart"></i> Add to Cart</button>
-                                        <button wire:click="checkOut()" class="btn btn-enroll w-100">Enroll Now</button>
+                                        {{-- <button wire:click="addToCart()" class="btn btn-wish w-100"><i class="feather-heart"></i> Add to Cart</button> --}}
+                                        <button wire:click="checkOut()" class="btn btn-enroll w-100">Apply For Admission</button>
                                         @else
                                         <a href="#" class="btn btn-wish w-100">Go to course</a>
                                         @endif

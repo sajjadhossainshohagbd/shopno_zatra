@@ -11530,11 +11530,11 @@ textarea:focus {
 .loginbox .form-control::placeholder {
 	color: #a2a2a2;
 }
-.toggle-password.feather-eye {
+.toggle-password.fa-eye {
     margin-right: 1px;
 	color: #6e82a3;
 }
-.toggle-password.feather-eye-off {
+.toggle-password.fa-eye-slash {
 	color: #F66962;
 }
 .pass-checked {

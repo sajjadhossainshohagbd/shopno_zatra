@@ -23,6 +23,7 @@
                             <th width="20%">Thumbnail</th>
                             <th>Name</th>
                             <th>Start From</th>
+                            <th>B2B Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@
                                 </a>
                             </td>
                             <td>{{ $package->start_from }}</td>
+                            <td>{{ $package->b2b_price }}</td>
                             <td>
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item">

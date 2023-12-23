@@ -15,6 +15,7 @@ class Add extends Component
     public $description;
     public $thumbnail;
     public $price;
+    public $b2b_price;
     public $country;
     public $program;
     public $terms_condition;
@@ -28,6 +29,7 @@ class Add extends Component
             'description' => 'required',
             'terms_condition' => 'required',
             'price' => 'required',
+            'b2b_price' => 'required',
             'thumbnail' => 'required|mimes:jpg,jpeg,png'
         ]);
 
@@ -39,6 +41,7 @@ class Add extends Component
         $holiday->terms_condition = $this->terms_condition;
         $holiday->thumbnail = $this->thumbnail->store('uploads/packages/holiday/thumbnail', 'public');
         $holiday->price = $this->price;
+        $holiday->b2b_price = $this->b2b_price;
         $holiday->save();
 
         return to_route('holiday.index')->with('success', 'Package added successfully!');

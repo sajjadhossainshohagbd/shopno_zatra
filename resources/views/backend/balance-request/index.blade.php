@@ -27,12 +27,22 @@
                         <tr wire:key='{{ $request->id }}'>
                             <th scope="row">{{ $requests->firstItem() + $loop->index }}</th>
                             <td>{{ $request->date_of_payment->format('d M Y h:i A') }}</td>
-                            <td>{{ $request->user?->name }}</td>
-                            <td>{{ $request->amount }}</td>
+                            <td>
+                                {{ $request->user?->name }}
+
+                                <div @class([
+                                    "badge text-white ",
+                                    "bg-success"
+                                ])>
+                                    {{ ucfirst($request->user?->role) }}
+                                </div>
+
+                            </td>
+                            <td>{{ $request->amount }} @if($request->type == 'deposit')  <br> <div class="badge text-white bg-secondary">Korea Deposit</div> @endif</td>
                             <td>{{ $request->transaction_id }}</td>
                             <td>
                                 <div @class([
-                                    "badge text-white font-size-12",
+                                    "badge text-white",
                                     "bg-success" => $request->status == 'approved',
                                     "bg-danger" => $request->status == 'cancelled',
                                     "bg-info" => $request->status == 'pending',

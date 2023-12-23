@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Buyer;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -15,6 +16,21 @@ class User extends Authenticatable
     public function getGetProfilePicAttribute()
     {
         return asset($this->profile_picture);
+    }
+
+    public function agent()
+    {
+        return $this->hasOne(Agent::class,'user_id','id');
+    }
+
+    public function worker()
+    {
+        return $this->hasOne(Worker::class,'user_id','id');
+    }
+
+    public function buyer()
+    {
+        return $this->hasOne(Buyer::class,'user_id','id');
     }
 
     /**
@@ -26,6 +42,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**

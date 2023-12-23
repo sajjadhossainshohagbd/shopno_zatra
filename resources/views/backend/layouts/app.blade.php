@@ -21,14 +21,20 @@
 
     </head>
 
-    <body data-sidebar="dark">
+    <body data-sidebar="{{ auth()->user()->role == 'agent' ? 'white' : 'dark' }}">
         <!-- Begin page -->
         <div id="layout-wrapper">
 
 
             @include('backend.inc.header')
             <!-- ========== Left Sidebar Start ========== -->
-            @include('backend.inc.sidebar')
+            @if(auth()->user()->role == 'agent')
+                @include('backend.inc.agent-sidebar')
+            @elseif(auth()->user()->role == 'buyer')
+                @include('backend.inc.buyer-sidebar')
+            @else
+                @include('backend.inc.sidebar')
+            @endif
             <!-- Left Sidebar End -->
 
 
@@ -84,7 +90,7 @@
         @elseif(session('success'))
         showAlert('success',"{{ session('success') }}")
         @endif
-        
+
         // Show alert from component
         Livewire.on('alert', (e) => {
             showAlert(e[0].type,e[0].message);

@@ -41,7 +41,11 @@
                                 </label>
                                 <br>
 
-                                <button class="btn btn-lg btn-success bg-app m-3" wire:loading.attr='disabled'>Buy Now <i wire:loading class="fas fa-spinner fa-spin"></i></button>
+                                @if(auth()->check() && auth()->user()->role == 'agent')
+                                <button type="button" class="btn btn-lg btn-secondary m-3" disabled>Agent Can't Order!</button>
+                                @else
+                                <button class="btn btn-lg btn-success bg-app m-3" wire:loading.attr='disabled'>Order Now <i wire:loading class="fas fa-spinner fa-spin"></i></button>
+                                @endif
                             </form>
                         </div>
                     </div>

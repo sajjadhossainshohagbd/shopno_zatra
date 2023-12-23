@@ -10,6 +10,7 @@ use Livewire\Attributes\Locked;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Auth;
 
 #[Layout('frontend.layouts.app')]
 class ResetPassword extends Component
@@ -64,8 +65,9 @@ class ResetPassword extends Component
 
         session()->flash('status', __($status));
 
-        $this->redirectRoute('login', navigate: true);
+        $this->redirectRoute('login');
     }
+    
     #[Title('Reset Password')]
     public function render()
     {

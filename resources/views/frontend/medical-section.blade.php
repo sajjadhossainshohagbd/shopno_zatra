@@ -33,16 +33,19 @@
             </div>
             <div class="row">
                 <div class="mt-4 col-6">
-                    <select wire:change='setCountry($event.target.value)' class="form-select custom-select">
+                    <select wire:change='setRequestCountry($event.target.value)' class="form-select custom-select">
                         <option value="" selected>Select Country</option>
                         @foreach ($countries as $country)
                         <option value="{{ $country }}">{{ $country }}</option>
                         @endforeach
                     </select>
+                    @if($request_country)
+                    <a href="{{ route('medical.visa.request',encrypt($request_country)) }}" class="m-2 btn btn-success text-white"><h6>Visa Request, Click here.</h6></a>
+                    @endif
                 </div>
                 <div class="mt-4 col-6">
                     <select wire:change='setService($event.target.value)' class="form-select custom-select">
-                        <option value="" selected>Work Related Service</option>
+                        <option value="" selected>Medical Related Service</option>
                         @foreach ($services as $service)
                         <option value="{{ $service->id }}">{{ $service->name }}</option>
                         @endforeach
@@ -51,18 +54,6 @@
                     <a href="{{ route('services.details',$service_id) }}" class="m-2 btn btn-primary text-white"><h6>View Details, Click here.</h6></a>
                     @endif
                 </div>
-            </div>
-        </div>
-        <div class="work-select">
-            <h3>Programs</h3>
-            <div class="hajj-selector">
-                <ul class="nav nav-pills mb-3">
-                    @foreach ($programs as $program)
-                    <li class="nav-item" role="presentation" wire:click="switchTab('{{ $program }}')">
-                        <button class="nav-link {{ $current_program == $program ? 'active' : '' }}">{{ $program }}</button>
-                    </li>
-                    @endforeach
-                </ul>
             </div>
         </div>
         <div class="get-offer">
@@ -74,6 +65,28 @@
                         </div>
                     </div>
                 </div>
+                <div class="work-select">
+                    <h3>Programs</h3>
+                    <div class="hajj-selector">
+                        <ul class="nav nav-pills mb-3">
+                            @foreach ($programs as $program)
+                            <li class="nav-item" role="presentation" wire:click="switchTab('{{ $program }}')">
+                                <button class="nav-link {{ $current_program == $program ? 'active' : '' }}">{{ $program }}</button>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                @if($current_program)
+                <div class="mt-4 col-6">
+                    <select wire:change='setCountry($event.target.value)' class="form-select custom-select">
+                        <option value="" selected>All Country</option>
+                        @foreach ($countries as $country)
+                        <option value="{{ $country }}">{{ $country }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @endif
                 <div class="row mt-3 offer-slider">
                     @foreach ($medical as $medu)
                     <div class="col-lg-4">

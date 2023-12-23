@@ -15,6 +15,7 @@ class Add extends Component
     public $description;
     public $thumbnail;
     public $price;
+    public $b2b_price;
     public $country;
     public $program;
     public $terms_condition;
@@ -28,18 +29,20 @@ class Add extends Component
             'description' => 'required',
             'terms_condition' => 'required',
             'price' => 'required',
+            'b2b_price' => 'required',
             'thumbnail' => 'required|mimes:jpg,jpeg,png'
         ]);
 
-        $work = new EducationVisa();
-        $work->name = $this->name;
-        $work->country = $this->country;
-        $work->program = $this->program;
-        $work->description = $this->description;
-        $work->terms_condition = $this->terms_condition;
-        $work->thumbnail = $this->thumbnail->store('uploads/packages/education/thumbnail', 'public');
-        $work->price = $this->price;
-        $work->save();
+        $edu = new EducationVisa();
+        $edu->name = $this->name;
+        $edu->country = $this->country;
+        $edu->program = $this->program;
+        $edu->description = $this->description;
+        $edu->terms_condition = $this->terms_condition;
+        $edu->thumbnail = $this->thumbnail->store('uploads/packages/education/thumbnail', 'public');
+        $edu->price = $this->price;
+        $edu->b2b_price = $this->b2b_price;
+        $edu->save();
 
         return to_route('education.visa.index')->with('success', 'Package added successfully!');
     }
