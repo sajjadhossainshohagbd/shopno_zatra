@@ -227,3 +227,24 @@ function showAlert(type,message){
 
     }
 }
+// Add More
+$('[data-toggle="add-more"]').each(function () {
+    var $this = $(this);
+    var content = $this.data("content");
+    var target = $this.data("target");
+
+    $this.on("click", function (e) {
+        e.preventDefault();
+        $(target).append(content);
+    });
+});
+
+$(document).on(
+    "click",
+    '[data-toggle="remove-parent"]',
+    function () {
+        var $this = $(this);
+        var parent = $this.data("parent");
+        $this.closest(parent).remove();
+    }
+);

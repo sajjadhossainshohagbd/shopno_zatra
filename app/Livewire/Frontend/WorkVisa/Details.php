@@ -24,7 +24,6 @@ class Details extends Component
         $this->work = WorkVisa::findOrFail($id);
     }
 
-
     public function applyNow()
     {
         $this->validate([
@@ -37,7 +36,6 @@ class Details extends Component
 
         return to_route('work.order',$this->work->id);
     }
-
 
     public function render()
     {

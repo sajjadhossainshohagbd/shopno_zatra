@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/theme-basic.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/theme-glass.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v=1.2">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v=1.2">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v=2.2">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v=2.0">
     @stack('css')
 </head>
 
@@ -27,7 +27,7 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <picture>
-                        <img src="{{ asset('frontend/assets') }}/images/logo.png" alt="logo">
+                        <img src="{{ asset(settings('site_logo')) }}" alt="logo">
                     </picture>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -37,9 +37,14 @@
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-end p-3 p-lg-0" id="navbarSupportedContent">
-                    <div class="nav-search d-flex align-items-center">
+                    {{-- <div class="nav-search d-flex align-items-center">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input type="text" placeholder="Search Here">
+                    </div> --}}
+
+                    <div class="nav-search input-group">
+                        <input type="text" class="form-control" id="searchQuery" placeholder="Search.." aria-label="Search.." value="{{ request('query') }}" aria-describedby="search-btn">
+                        <button class="btn btn-outline-success" onclick="redirectToSearch('desktop')" type="button" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
 
                     <ul class="navbar-nav mb-2 mb-lg-0 mb-md-0">
@@ -47,10 +52,10 @@
                             <a class="nav-link bg-app text-white me-1" aria-current="page" href="#">Inbox</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-app text-white me-1" href="{{ route('about.us') }}">About Us</a>
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('page.details','about-us') }}">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bg-app text-white me-1" href="#">News Media</a>
+                            <a class="nav-link bg-app text-white me-1" href="{{ route('news.media') }}">News Media</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link bg-app text-white me-1" href="{{ route('courses') }}">Courses</a>
@@ -85,7 +90,7 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <a href="{{ route('about.us') }}" class="accordion-button single-link collapsed">About Us</a>
+                            <a href="{{ route('page.details','about-us') }}" class="accordion-button single-link collapsed">About Us</a>
                         </h2>
                     </div>
                     <div class="accordion-item">
@@ -106,6 +111,18 @@
                             <a href="{{ route('login') }}" class="accordion-button single-link collapsed">Log In</a>
                             @endauth
                         </h2>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#touristOffer" aria-controls="touristOffer"> Tourist & Business <div class="badge bg-danger ms-2 fa-beat"> Offer</div></a>
+                        </h2>
+                        <div id="touristOffer" class="accordion-collapse collapse" data-bs-parent="#accordion0">
+                            <div class="accordion-body">
+                                @foreach (App\Models\Tourist::all() as $item)
+                                <a href="{{ route('tourist.details',$item->id) }}">{{ $item->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
 
                     <div class="accordion-item">
@@ -193,7 +210,7 @@
                 <div class="col-lg-12">
                     <div class="extra-links">
                         <ul>
-                            <li><a href="{{ route('about.us') }}"> About Us </a></li>
+                            <li><a href="{{ route('page.details','about-us') }}"> About Us </a></li>
                             <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                             <li><a href="{{ url('shopnozatra.apk') }}" download>Download App</a></li>
                         </ul>
@@ -238,72 +255,7 @@
         </div>
     </footer> --}}
 
-    <footer>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-3">
-                    <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="">
-                    <p class="pt-3">
-                        Shopno Zatra is the country’s first and leading online travel aggregator (OTA). Since our inception, we have dreamt of making travel easier for people of all ages and we move forward to make that dream into reality.
-                    </p>
-                </div>
-                <div class="col-md-2 col-sm-3">
-                    <h6><b>Explore</b></h6>
-                    <ul class="mt-3">
-                        <li class="mb-2"><a href="" class="nav-link">About Us</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Contact Us</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Terms & Conditions</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 col-sm-3">
-                    <h6><b>Services</b></h6>
-                    <ul class="mt-3">
-                        <li class="mb-2"><a href="" class="nav-link">Flight</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Hotel</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Holiday</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Visa</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 col-sm-2">
-                    <h6><b>Useful Links</b></h6>
-                    <ul class="mt-3">
-                        <li class="mb-2"><a href="" class="nav-link">Travel guide</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Travel adviosry</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Visa Guide</a></li>
-                        <li class="mb-2"><a href="" class="nav-link">Visa Application</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3">
-                    <h6><b>Payment Method</b></h6>
-                    <img src="{{ asset('frontend/images/payment.png') }}" width="200">
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-3">
-                    <h6 class="mb-3"><b>Contact Us</b></h6>
-                    <span class="mb-2"><b>Email :</b> <a href="mailto:info@shopnozatra.com">info@shopnozatra.com</a></span> <br>
-                    <span class="mb-2"><b>Phone :</b> <a href="tel:01700000000">01700000000</a></span> <br>
-                    <span class="mb-2"><b>WhatsApp :</b> <a href="https://api.whatsapp.com/send/?phone=&text&type=phone_number&app_absent=0">Message Us</a></span>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="mb-3"><b>Dhaka Office</b></h6>
-                    <p>
-                        Kazipara, Mirpur-10, Dhaka 1213, Bangladesh.
-                    </p>
-                    <a href="" class="m-2"><i class="fa fa-location-dot text-app"></i> View Map</a>
-                </div>
-            </div>
-            <hr>
-            <div class="text-center">
-                <div class="copyright ">
-                    <p> Copyright <i class="fa-regular fa-copyright"></i> {{ date('Y') }} . Shopno Zatra. All Right Reserved</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <livewire:frontend.inc.footer>
     <!-- Footer area end -->
 
     <div class="extra-btn-top">
@@ -322,6 +274,20 @@
     <script src="{{ asset('frontend') }}/assets/js/bundle.js" data-navigate-track></script>
     <script src="{{ asset('frontend') }}/assets/js/index.js?v=1.2" data-navigate-track></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" data-navigate-track></script>
+    <script>
+        function redirectToSearch(from) {
+            // Get the input value
+            var query = from == 'desktop' ? document.getElementById('searchQuery').value : document.getElementById('searchQueryOne').value;
+
+            // Construct the URL with the input value
+            var redirectUrl = '{{ url('search') }}/' + encodeURIComponent(query);
+
+            // Redirect to the URL
+            window.location.href = redirectUrl;
+        }
+
+    </script>
+
     @stack('js')
 
     <!-- Javascript area end -->

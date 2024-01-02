@@ -122,6 +122,17 @@ Route::prefix('holiday-package')->name('holiday.')->group(function(){
     Route::get('request-details/{id}',App\Livewire\Backend\Holiday\RequestDetails::class)->name('request.details');
 });
 
+// Tourist Package
+Route::prefix('tourist')->name('tourist.')->group(function(){
+    Route::get('/',App\Livewire\Backend\Tourist\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\Tourist\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\Tourist\Edit::class)->name('edit');
+    Route::get('orders',App\Livewire\Backend\Tourist\Order::class)->name('orders');
+    Route::get('order-details/{id}',App\Livewire\Backend\Tourist\OrderDetails::class)->name('order.details');
+    Route::get('request-history',App\Livewire\Backend\Tourist\RequestHistory::class)->name('request.history');
+    Route::get('request-details/{id}',App\Livewire\Backend\Tourist\RequestDetails::class)->name('request.details');
+});
+
 // Agent
 Route::prefix('agents')->name('agent.')->group(function(){
     Route::get('/',App\Livewire\Backend\Agent\AgentList::class)->name('index');
@@ -181,6 +192,33 @@ Route::prefix('marketing')->name('marketing.')->group(function(){
 Route::prefix('korea.visa')->name('korea.visa.')->group(function(){
     Route::get('/user-list',App\Livewire\Backend\Korea\UserList::class)->name('user.list');
     Route::get('/deduct-balance/{id}',App\Livewire\Backend\Korea\Deduct::class)->name('deduct.balance');
+});
+
+// News Media
+Route::prefix('news-categories')->name('news.category.')->group(function(){
+    Route::get('/',App\Livewire\Backend\News\Category\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\News\Category\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\News\Category\Edit::class)->name('edit');
+});
+
+// Posts
+Route::prefix('posts')->name('post.')->group(function(){
+    Route::get('/',App\Livewire\Backend\News\Post\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\News\Post\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\News\Post\Edit::class)->name('edit');
+});
+
+// Pages
+Route::prefix('pages')->name('page.')->group(function(){
+    Route::get('/',App\Livewire\Backend\Page\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\Page\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\Page\Edit::class)->name('edit');
+});
+// Offices
+Route::prefix('offices')->name('office.')->group(function(){
+    Route::get('/',App\Livewire\Backend\Office\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\Office\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\Office\Edit::class)->name('edit');
 });
 
 // Settings

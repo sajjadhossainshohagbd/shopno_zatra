@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->enum('type',['work_visa','hajj_visa','education_visa','medical_visa','holiday_package']);
+            $table->enum('type',['work_visa','hajj_visa','umrah_visa','education_visa','medical_visa','holiday_package']);
             $table->text('thumbnail');
             $table->text('name');
             $table->longText('description');

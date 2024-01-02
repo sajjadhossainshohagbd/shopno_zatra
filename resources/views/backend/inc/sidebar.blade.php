@@ -78,9 +78,11 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{ route('hajj.index') }}">Hajj List</a></li>
-                        <li><a href="{{ route('services.index','hajj_visa') }}">Service List</a></li>
+                        <li><a href="{{ route('services.index','hajj_visa') }}">Hajj Service List</a></li>
+                        <li><a href="{{ route('services.index','umrah_visa') }}">Umrah Service List</a></li>
                         <li><a href="{{ route('hajj.orders') }}">Orders</a></li>
-                        <li><a href="{{ route('services.orders','hajj_visa') }}">Service Orders</a></li>
+                        <li><a href="{{ route('services.orders','hajj_visa') }}">Hajj Service Orders</a></li>
+                        <li><a href="{{ route('services.orders','umrah_visa') }}">Umrah Service Orders</a></li>
                     </ul>
                 </li>
 
@@ -96,6 +98,18 @@
                         <li><a href="{{ route('services.orders','work_visa') }}">Service Orders</a></li>
                         <li><a href="{{ route('work.visa.request.history') }}">Request History</a></li>
 
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-chess"></i>
+                        <span>Tourist Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('tourist.index') }}">Tourist List</a></li>
+                        <li><a href="{{ route('tourist.orders') }}">Orders</a></li>
+                        <li><a href="{{ route('tourist.request.history') }}">Request History</a></li>
                     </ul>
                 </li>
 
@@ -246,6 +260,33 @@
                 </li>
 
                 <li class="menu-title">System</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-newspaper"></i>
+                        <span>News Media</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('news.category.index') }}">Categories</a></li>
+                        <li><a href="{{ route('post.index') }}">Posts</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-file"></i>
+                        <span>Pages</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('page.index') }}">Page List</a></li>
+                        <li><a href="{{ route('page.add') }}">Add New Page</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ route('office.index') }}">
+                        <i class="uil-map"></i>
+                        <span>Offices</span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="{{ route('settings') }}">
                         <i class="uil-cog"></i>

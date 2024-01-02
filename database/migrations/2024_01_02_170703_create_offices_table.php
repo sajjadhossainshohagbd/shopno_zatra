@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('video_sections', function (Blueprint $table) {
+        Schema::create('offices', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('url');
-            $table->string('type')->default('video');
-            $table->integer('position')->nullable();
+            $table->enum('type',['abroad','bangladesh']);
+            $table->string('title');
+            $table->text('address');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('video_sections');
+        Schema::dropIfExists('offices');
     }
 };

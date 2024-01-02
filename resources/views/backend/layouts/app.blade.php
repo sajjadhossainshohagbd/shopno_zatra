@@ -83,7 +83,7 @@
      <script src="{{ asset('/backend') }}/assets/libs/jquery.counterup/jquery.counterup.min.js" data-navigate-track></script>
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" data-navigate-track></script>
      <!-- App js -->
-     <script src="{{ asset('/backend') }}/assets/js/app.js" data-navigate-track></script>
+     <script src="{{ asset('/backend') }}/assets/js/app.js?v=1.0" data-navigate-track></script>
      <script>
         @if(session('error'))
         showAlert('error',"{{ session('error') }}")

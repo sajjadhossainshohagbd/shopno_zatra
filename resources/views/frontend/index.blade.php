@@ -1,10 +1,16 @@
 <div>
     <!-- Banner area start -->
     <div class="mx-3 d-md-none">
-        <div class="nav-search w-100 d-flex align-items-center mb-3 mt-3 ">
+        {{-- <div class="nav-search w-100 d-flex align-items-center mb-3 mt-3 ">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Search Here">
+        </div> --}}
+
+        <div class="nav-search w-100 input-group mb-3 mt-3">
+            <input type="text" class="form-control" id="searchQueryOne" placeholder="Search.." aria-label="Search.." value="{{ request('query') }}" aria-describedby="search-btn">
+            <button class="btn btn-outline-success" onclick="redirectToSearch('mobile')" type="button" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
+
     </div>
 
     <div class="banner-main">
@@ -14,33 +20,94 @@
                     <div class="banner-list">
                         <div class="nav flex-column nav-pills me-3" id="videoSection" role="tablist"
                             aria-orientation="vertical">
-                            @foreach ($this->sections as $section)
-                            <button @if($section->type == 'link') onclick="window.location.href='{{ $section->link }}'" @endif class="nav-link {{ $loop->index == 0 ? 'active' : '' }}" id="data-{{ $loop->index }}-tab" data-bs-toggle="pill"
-                                data-bs-target="#tab-{{ $loop->index }}" type="button" role="tab" aria-controls="tab-{{ $loop->index }}"
-                                aria-selected="true"> {{ $section->name }}
+
+                            <button class="nav-link" id="data-login-tab" data-bs-toggle="pill" data-bs-target="#tab-login" type="button" role="tab" aria-selected="true">
+                                Log In
                             </button>
-                            @endforeach
+
+                            <button class="nav-link active" id="data-home-tab" data-bs-toggle="pill" data-bs-target="#tab-home" type="button" role="tab" aria-selected="true">
+                                Home
+                            </button>
+
+                            <button class="nav-link" id="data-service-tab" data-bs-toggle="pill" data-bs-target="#tab-service" type="button" role="tab" aria-selected="true">
+                                Services
+                            </button>
+
+                            <button class="nav-link" id="data-payment-tab" data-bs-toggle="pill" data-bs-target="#tab-payment" type="button" role="tab" aria-selected="true">
+                                Payment
+                            </button>
+
+                            <button class="nav-link" id="data-contact-tab" data-bs-toggle="pill" data-bs-target="#tab-contact" type="button" role="tab" aria-selected="true">
+                                Contact
+                            </button>
+
                             <button class="nav-link" id="data-offer-tab" data-bs-toggle="pill"
                                 data-bs-target="#tab-offer" type="button" role="tab" aria-controls="tab-offer"
                                 aria-selected="true" onclick="document
                                 .getElementById('ticket-offer')
                                 .scrollIntoView({ behavior:'smooth' })">
-                                Offers
+                                Offers <span class="badge bg-danger fa-beat">({{ $offer_count }})</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-9 col-lg-10 col-md-9 mt-lg-0">
-                    <div class="banner-infos">
-                        <div class="tab-content" id="videoSectionContent">
-                            @foreach ($this->sections as $section)
-                                @if($section->type == 'video')
-                                <div class="tab-pane fade {{ $loop->index == 0 ? 'show active' : '' }} " id="tab-{{ $loop->index }}" role="tabpanel"
-                                    aria-labelledby="data-{{ $loop->index }}-tab" tabindex="0">
-                                    <iframe src="{{ $section->video_url }}" class="w-100 iframe-video" loading="lazy" allowfullscreen frameborder="0"></iframe>
+                    <div class="tab-content" id="videoSectionContent">
+                        <div class="tab-pane fade" id="tab-login" role="tabpanel"
+                            aria-labelledby="data-login-tab" tabindex="0">
+                            <livewire:auth.section-login>
+                        </div>
+                        <div class="tab-pane fade show active" id="tab-home" role="tabpanel"
+                            aria-labelledby="data-home-tab" tabindex="0">
+                            <iframe src="{{ generateVideoEmbedUrl(settings('home_video_link')) }}" class="w-100 iframe-video" loading="lazy" allowfullscreen frameborder="0"></iframe>
+                        </div>
+                        <div class="tab-pane fade" id="tab-service" role="tabpanel"
+                            aria-labelledby="data-service-tab" tabindex="0">
+                            <div class="row bg-white p-3 services">
+                                @php
+                                    $titles = is_array(json_decode(settings('header_services_title'))) ? json_decode(settings('header_services_title')) : [];
+                                    $icons = @json_decode(settings('header_services_logo'));
+                                    $url = @json_decode(settings('header_services_url'));
+                                @endphp
+                                @foreach ($titles as $key => $title)
+                                <div class="col-4 col-md-4">
+                                    <a href="{{ @$url[$key] }}">
+                                        <div class="text-center text-black">
+                                            <img src="{{ asset(@$icons[$key]) }}" alt="{{ $title }} Services" class="img-fluid service-icon" width="100">
+                                            <h6>{{ $title }}</h6>
+                                        </div>
+                                    </a>
                                 </div>
-                                @endif
-                            @endforeach
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-payment" role="tabpanel"
+                            aria-labelledby="data-payment-tab" tabindex="0">
+                            <div class="bg-white p-2">
+                                @php
+                                    $titles = is_array(json_decode(settings('header_button_title'))) ? json_decode(settings('header_button_title')) : [];
+                                    $url = @json_decode(settings('header_button_url'));
+                                @endphp
+                                <div class="row">
+                                    @foreach ($titles as $key => $name)
+                                    <div class="col-md-4 text-center">
+                                        <a href="{{ $url[$key] }}" class="btn bg-app text-white mb-2">{{ $name }}</a>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-contact" role="tabpanel"
+                            aria-labelledby="data-contact-tab" tabindex="0">
+                            <div class="bg-white text-center">
+                                <h4 class="mb-2 mt-2">Contact Us</h4>
+                                <hr>
+                                <a href="{{ settings('fb_link') }}"><i class="fa-brands fa-facebook fa-4x m-2"></i></a>
+                                <a href="{{ settings('youtube_link') }}"><i class="fa-brands fa-youtube fa-4x text-danger m-2"></i></a>
+                                <a href="{{ settings('instagram_link') }}"><i class="fa-brands fa-instagram fa-4x m-2 text-secondary"></i></a>
+                                <a href="{{ settings('twitter_link') }}"><i class="fa-brands fa-twitter fa-4x m-2"></i></a>
+                                {{-- <a href="{{ settings('whatsapp_link') }}"><i class="fa-brands fa-whatsapp fa-4x m-2 text-success"></i></a> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -553,7 +620,7 @@
 
     <!-- Tourist area start -->
 
-    <div class="tourist-main">
+    {{-- <div class="tourist-main">
         <div class="container">
             <div class="heading">
                 <div class="row justify-content-baseline align-items-center">
@@ -644,7 +711,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <livewire:frontend.tourist-section lazy="on-load"/>
 
     <!-- Tourist area end -->
 
@@ -990,15 +1059,15 @@
 
     <!-- Balance area start -->
 
-    <div class="balance-main">
+    <div class="banner2-main">
         <div class="container">
             <div class="heading">
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-6 col-md-7">
                         <div class="header-left-text">
-                            <h3>Abroad to Abroad Balance Transfer For Emergency</h3>
+                            <h3 class="text-white">Abroad to Abroad Balance Transfer For Emergency</h3>
                         </div>
-                        <div class="buttons">
+                        <div class="buttons pt-2">
                             <button onclick="location.href='{{ route('user.balance.transfer') }}'">My Balance Transfer</button>
                         </div>
                     </div>
@@ -1017,15 +1086,15 @@
 
     <!-- Banner 2 area start -->
 
-    <div class="banner2-main">
+    {{-- <div class="banner2-main">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6">
                     <div class="banner2-left">
                         <h3>Let’s Contact Us For Any Inquiry</h3>
-                        {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
+                        <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
                             elements and real-world textures mentally clash with that flatness creating some dissonance.
-                        </p> --}}
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-2 text-end">
@@ -1035,7 +1104,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Banner 2 area end -->
 </div>

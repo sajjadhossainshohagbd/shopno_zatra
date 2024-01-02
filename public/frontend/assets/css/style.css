@@ -89,7 +89,7 @@ body {
   width: 50%;
   margin: 0 auto;
   background: #fff;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border: 1px solid #eae9d3;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -1327,4 +1327,10 @@ a.nav-link.bg-app.text-white.me-1:hover {
     background-color: #fff;
     color: #000 !important;
     border: 1px solid #c0b914;
+}
+
+@media (max-width : 450px) {
+    .services h6 {
+        font-size: 14px;
+    }
 }

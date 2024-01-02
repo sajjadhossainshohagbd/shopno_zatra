@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class VideoSection extends Model
+class Tourist extends Model
 {
     use HasFactory;
 
-    public function getVideoUrlAttribute()
+    public function getShowThumbnailAttribute()
     {
-        $url = generateVideoEmbedUrl($this->url);
-
-        return $url;
+        return asset($this->thumbnail);
     }
 }

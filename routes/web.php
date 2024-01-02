@@ -19,11 +19,19 @@ Route::get('migrate',function(){
 });
 
 Route::get('/',App\Livewire\Frontend\Index::class)->name('home');
+Route::get('/news-media',App\Livewire\Frontend\News\Index::class)->name('news.media');
+Route::get('/news-media/{slug}',App\Livewire\Frontend\News\Details::class)->name('news.media.details');
+Route::get('/office-address/{id}',App\Livewire\Frontend\Office\Details::class)->name('office.address.details');
+Route::get('/search/{query}',App\Livewire\Frontend\Search::class)->name('search');
 Route::get('/contact-us',App\Livewire\Frontend\ContactUs::class)->name('contact.us');
-Route::get('/about-us',App\Livewire\Frontend\AboutUs::class)->name('about.us');
-Route::get('/privacy-policy',App\Livewire\Frontend\PrivacyPolicy::class)->name('privacy.policy');
 
+// Profile
 Route::get('/profile',App\Livewire\Backend\Profile::class)->name('profile')->middleware('auth');
+
+// Tourist Package & Order
+Route::get('/tourist-request/{country}',App\Livewire\Frontend\Tourist\VisaRequest::class)->name('tourist.visa.request');
+Route::get('/tourist-details/{id}',App\Livewire\Frontend\Tourist\Details::class)->name('tourist.details');
+Route::get('/tourist-order/{id}',App\Livewire\Frontend\Tourist\Order::class)->name('tourist.order');
 
 // Hajj Details & Order
 Route::get('/{type}/package-details/{id}',App\Livewire\Frontend\Hajj\Details::class)->name('hajj.details');
@@ -50,7 +58,8 @@ Route::get('/holiday-details/{id}',App\Livewire\Frontend\Holiday\Details::class)
 Route::get('/holiday-order/{id}',App\Livewire\Frontend\Holiday\Order::class)->name('holiday.order');
 
 // Service Details
-Route::get('services-details/{id}',App\Livewire\Frontend\Service\Details::class)->name('services.details');
+Route::get('services/{type}',App\Livewire\Frontend\Service\Index::class)->name('services.details');
+Route::get('services-details/{slug}',App\Livewire\Frontend\Service\Details::class)->name('services.details');
 Route::get('service-order/{id}',App\Livewire\Frontend\Service\Order::class)->name('service.order');
 
 // CV Builder
@@ -99,3 +108,5 @@ Route::middleware('guest')->group(function(){
     Route::get('/forget-password', App\Livewire\Auth\ForgetPassword::class)->name('forget.password');
     Route::get('reset-password/{token}',App\Livewire\Auth\ResetPassword::class)->name('password.reset');
 });
+
+Route::get('/{slug}',App\Livewire\Frontend\Page::class)->name('page.details');
