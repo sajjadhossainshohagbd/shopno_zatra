@@ -2,11 +2,13 @@
 
 namespace App\Livewire\Backend\Service;
 
-use App\Models\BalanceCostHistory;
-use App\Models\ServiceOrder;
 use Livewire\Component;
+use App\Models\ServiceOrder;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Locked;
+use App\Models\BalanceCostHistory;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\UpdateStatusNotification;
 
 class OrderDetails extends Component
 {
@@ -25,6 +27,9 @@ class OrderDetails extends Component
     {
         $order = $this->order;
         $order->payment_status = $status;
+        $type = str_replace('_',' ',$order->service?->type);
+        Notification::send($order->user,new UpdateStatusNotification("Your {$type} service '{$order->service?->name}' order payment status updated from <b>{$order->getOriginal('payment_status')}</b> to <b>{$order->payment_status}</b>."));
+
         $order->save();
 
         $this->dispatch('alert',[
@@ -37,6 +42,9 @@ class OrderDetails extends Component
     {
         $order = $this->order;
         $order->status = $status;
+        $type = str_replace('_',' ',$order->service?->type);
+        Notification::send($order->user,new UpdateStatusNotification("Your {$type} service '{$order->service?->name}' order status updated from <b>{$order->getOriginal('status')}</b> to <b>{$order->status}</b>."));
+
         $order->save();
 
         $this->dispatch('alert',[

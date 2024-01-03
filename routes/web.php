@@ -19,6 +19,7 @@ Route::get('migrate',function(){
 });
 
 Route::get('/',App\Livewire\Frontend\Index::class)->name('home');
+Route::get('/notifications',App\Livewire\Frontend\Notification::class)->name('notifications');
 Route::get('/news-media',App\Livewire\Frontend\News\Index::class)->name('news.media');
 Route::get('/news-media/{slug}',App\Livewire\Frontend\News\Details::class)->name('news.media.details');
 Route::get('/office-address/{id}',App\Livewire\Frontend\Office\Details::class)->name('office.address.details');
@@ -59,7 +60,7 @@ Route::get('/holiday-order/{id}',App\Livewire\Frontend\Holiday\Order::class)->na
 
 // Service Details
 Route::get('services/{type}',App\Livewire\Frontend\Service\Index::class)->name('services.details');
-Route::get('services-details/{slug}',App\Livewire\Frontend\Service\Details::class)->name('services.details');
+Route::get('services-details/{id}',App\Livewire\Frontend\Service\Details::class)->name('services.details');
 Route::get('service-order/{id}',App\Livewire\Frontend\Service\Order::class)->name('service.order');
 
 // CV Builder

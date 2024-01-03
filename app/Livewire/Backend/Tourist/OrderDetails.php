@@ -4,6 +4,8 @@ namespace App\Livewire\Backend\Tourist;
 
 use Livewire\Component;
 use App\Models\TouristOrder;
+use App\Notifications\UpdateStatusNotification;
+use Illuminate\Support\Facades\Notification;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Locked;
 
@@ -24,7 +26,11 @@ class OrderDetails extends Component
     {
         $order = $this->order;
         $order->payment_status = $status;
+
+        Notification::send($order->user,new UpdateStatusNotification("Your tourist package '{$order->tourist?->name}' order payment status updated from <b>{$order->getOriginal('payment_status')}</b> to <b>{$order->payment_status}</b>."));
+
         $order->save();
+
 
         $this->dispatch('alert',[
             'type' => 'success',
@@ -36,6 +42,9 @@ class OrderDetails extends Component
     {
         $order = $this->order;
         $order->status = $status;
+
+        Notification::send($order->user,new UpdateStatusNotification("Your tourist package '{$order->tourist?->name}' order status updated from <b>{$order->getOriginal('status')}</b> to <b>{$order->status}</b>."));
+
         $order->save();
 
         $this->dispatch('alert',[

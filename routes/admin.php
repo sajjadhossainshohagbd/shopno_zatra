@@ -41,8 +41,6 @@ Route::prefix('courses')->name('courses.')->group(function(){
     Route::get('/edit/{id}',App\Livewire\Backend\Courses\Edit::class)->name('edit');
 });
 
-
-
 // Course Lesson
 Route::prefix('lessons')->name('lessons.')->group(function(){
     Route::get('/',App\Livewire\Backend\Lesson\Index::class)->name('index');

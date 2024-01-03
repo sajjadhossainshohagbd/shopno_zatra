@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/theme-basic.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/theme-glass.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v=2.2">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/style.css?v=2.4">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/responsive.css?v=2.0">
     @stack('css')
 </head>
@@ -49,7 +49,14 @@
 
                     <ul class="navbar-nav mb-2 mb-lg-0 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link bg-app text-white me-1" aria-current="page" href="#">Inbox</a>
+                            <a class="nav-link bg-app text-white me-1" aria-current="page" href="{{ route('notifications') }}">
+                                Inbox
+                                @auth
+                                    @if($notification_count = count(auth()->user()->unreadNotifications))
+                                    <div class="badge bg-danger">({{ $notification_count }})</div>
+                                    @endif
+                                @endauth
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link bg-app text-white me-1" href="{{ route('page.details','about-us') }}">About Us</a>

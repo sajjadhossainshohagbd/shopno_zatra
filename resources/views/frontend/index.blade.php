@@ -43,9 +43,7 @@
 
                             <button class="nav-link" id="data-offer-tab" data-bs-toggle="pill"
                                 data-bs-target="#tab-offer" type="button" role="tab" aria-controls="tab-offer"
-                                aria-selected="true" onclick="document
-                                .getElementById('ticket-offer')
-                                .scrollIntoView({ behavior:'smooth' })">
+                                aria-selected="true">
                                 Offers <span class="badge bg-danger fa-beat">({{ $offer_count }})</span>
                             </button>
                         </div>
@@ -107,6 +105,26 @@
                                 <a href="{{ settings('instagram_link') }}"><i class="fa-brands fa-instagram fa-4x m-2 text-secondary"></i></a>
                                 <a href="{{ settings('twitter_link') }}"><i class="fa-brands fa-twitter fa-4x m-2"></i></a>
                                 {{-- <a href="{{ settings('whatsapp_link') }}"><i class="fa-brands fa-whatsapp fa-4x m-2 text-success"></i></a> --}}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-offer" role="tabpanel"
+                            aria-labelledby="data-offer-tab" tabindex="0">
+                            <div class="row bg-white p-3">
+                                @php
+                                    $offer_titles = is_array(json_decode(settings('header_offers_title'))) ? json_decode(settings('header_offers_title')) : [];
+                                    $offer_icons = @json_decode(settings('header_offers_logo'));
+                                    $offer_url = @json_decode(settings('header_offers_url'));
+                                @endphp
+                                @foreach ($offer_titles as $key => $title)
+                                <div class="col-4 col-md-3">
+                                    <a href="{{ @$offer_url[$key] }}">
+                                        <div class="text-center text-black">
+                                            <img src="{{ asset(@$offer_icons[$key]) }}" alt="{{ $title }} Offers" class="img-fluid service-icon" width="100">
+                                            <h6>{{ $title }}</h6>
+                                        </div>
+                                    </a>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
