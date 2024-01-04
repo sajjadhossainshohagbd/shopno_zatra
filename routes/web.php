@@ -19,6 +19,12 @@ Route::get('migrate',function(){
 });
 
 Route::get('/',App\Livewire\Frontend\Index::class)->name('home');
+Route::get('/offers/tourist',App\Livewire\Frontend\Offers\Tourist::class)->name('tourist.offers');
+Route::get('/offers/hajj',App\Livewire\Frontend\Offers\Hajj::class)->name('hajj.offers');
+Route::get('/offers/work',App\Livewire\Frontend\Offers\WorkVisa::class)->name('work.visa.offers');
+Route::get('/offers/education',App\Livewire\Frontend\Offers\Education::class)->name('education.visa.offers');
+Route::get('/offers/medical',App\Livewire\Frontend\Offers\Medical::class)->name('medical.visa.offers');
+Route::get('/offers/holiday-pack',App\Livewire\Frontend\Offers\HolidayPack::class)->name('holiday.pack.offers');
 Route::post('/image-upload',App\Http\Controllers\Backend\ImageUploadController::class)->name('image.upload');
 Route::get('/notifications',App\Livewire\Frontend\Notification::class)->name('notifications');
 Route::get('/news-media',App\Livewire\Frontend\News\Index::class)->name('news.media');
