@@ -19,6 +19,7 @@ Route::get('migrate',function(){
 });
 
 Route::get('/',App\Livewire\Frontend\Index::class)->name('home');
+Route::post('/image-upload',App\Http\Controllers\Backend\ImageUploadController::class)->name('image.upload');
 Route::get('/notifications',App\Livewire\Frontend\Notification::class)->name('notifications');
 Route::get('/news-media',App\Livewire\Frontend\News\Index::class)->name('news.media');
 Route::get('/news-media/{slug}',App\Livewire\Frontend\News\Details::class)->name('news.media.details');
