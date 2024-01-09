@@ -68,7 +68,7 @@
                                     $url = @json_decode(settings('header_services_url'));
                                 @endphp
                                 @foreach ($titles as $key => $title)
-                                <div class="col-4 col-md-4">
+                                <div class="col-4 col-md-3">
                                     <a href="{{ @$url[$key] }}">
                                         <div class="text-center text-black">
                                             <img src="{{ asset(@$icons[$key]) }}" alt="{{ $title }} Services" class="img-fluid service-icon" width="100">
@@ -100,11 +100,14 @@
                             <div class="bg-white text-center">
                                 <h4 class="mb-2 mt-2">Contact Us</h4>
                                 <hr>
-                                <a href="{{ settings('fb_link') }}"><i class="fa-brands fa-facebook fa-4x m-2"></i></a>
+                                <a href="{{ settings('fb_link') }}"><i class="fa-brands fa-facebook fa-4x m-2 text-info"></i></a>
                                 <a href="{{ settings('youtube_link') }}"><i class="fa-brands fa-youtube fa-4x text-danger m-2"></i></a>
                                 <a href="{{ settings('instagram_link') }}"><i class="fa-brands fa-instagram fa-4x m-2 text-secondary"></i></a>
-                                <a href="{{ settings('twitter_link') }}"><i class="fa-brands fa-twitter fa-4x m-2"></i></a>
-                                {{-- <a href="{{ settings('whatsapp_link') }}"><i class="fa-brands fa-whatsapp fa-4x m-2 text-success"></i></a> --}}
+                                <a href="{{ settings('twitter_link') }}"><i class="fa-brands fa-twitter fa-4x m-2 text-info"></i></a>
+                                <a href="{{ settings('whatsapp_link') }}"><i class="fa-brands fa-whatsapp fa-4x m-2 text-success"></i></a>
+                                <a href="{{ settings('linkedin_link') }}"><i class="fa-brands fa-linkedin fa-4x m-2 text-primary"></i></a>
+                                <a href="{{ settings('footer_phone') }}"><i class="fa-solid fa-phone-volume fa-4x m-2 text-success"></i></a>
+                                <a href="mailto:{{ settings('footer_email') }}"><i class="fa-solid fa-envelope fa-4x m-2 text-secondary"></i></a>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="tab-offer" role="tabpanel"
@@ -212,7 +215,7 @@
                                     <img src="{{ asset('frontend/assets') }}/images/need6.png" alt="need-icon">
                                 </div>
                                 <div class="need-text text-black">
-                                    <h3>Holiday Pack</h3>
+                                    <h3>Holiday Package</h3>
                                 </div>
                             </a>
                         </div>
@@ -263,376 +266,9 @@
 
     <!-- Ticktes area end -->
 
-    <!-- Ticektes selection area start -->
-
-    <div class="ticktes-selection-main">
-        <div class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-4 text-center">
-                    <div class="selection-main">
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                    aria-selected="true">One Way
-                                </button>
-                                <button class="nav-link" id="nav-round-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-round" type="button" role="tab" aria-controls="nav-round"
-                                    aria-selected="false">Round Way
-                                </button>
-                                <button class="nav-link" id="nav-multi-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-multi" type="button" role="tab" aria-controls="nav-multi"
-                                    aria-selected="false">Multi City
-                                </button>
-                            </div>
-                        </nav>
-
-                    </div>
-                </div>
-            </div>
-            <div class="option-main">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
-                        tabindex="0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="option-panel">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-6">
-                                            <div class="fly">
-                                                <h3>Flying From</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">Dhaka</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">Shylet</li>
-                                                        <li data-value="2" class="option">Chittagong</li>
-                                                        <li data-value="4" class="option">Saidpur</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <div class="fly">
-                                                <h3>Flying To</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">Cox's Bazar</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">Shylet</li>
-                                                        <li data-value="2" class="option">Chittagong</li>
-                                                        <li data-value="4" class="option">Saidpur</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mt-md-4 mt-lg-0 text-center">
-                                            <div class="fly">
-                                                <h3>Select Date</h3>
-                                                <div class="dates d-flex justify-content-between align-items-center">
-                                                    <div
-                                                        class="date-inner d-flex justify-content-between align-items-center">
-                                                        <h6>Departure Date</h6>
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </div>
-                                                    <div
-                                                        class="date-inner d-flex justify-content-between align-items-center">
-                                                        <h6>Return Date</h6>
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </div>
-                                                </div>
-                                                <!-- <div id="color-calendar"></div> -->
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 mt-md-4 mt-lg-0">
-                                            <div class="fly">
-                                                <h3>Passenger & Cabin Class</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">1 Person</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">1 Person</li>
-                                                        <li data-value="2" class="option">1 Person</li>
-                                                        <li data-value="4" class="option">1 Person</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-round" role="tabpanel" aria-labelledby="nav-round-tab"
-                        tabindex="0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="option-panel">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-6">
-                                            <div class="fly">
-                                                <h3>Flying From</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">Dhaka</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">Shylet</li>
-                                                        <li data-value="2" class="option">Chittagong</li>
-                                                        <li data-value="4" class="option">Saidpur</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <div class="fly">
-                                                <h3>Flying To</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">Cox's Bazar</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">Shylet</li>
-                                                        <li data-value="2" class="option">Chittagong</li>
-                                                        <li data-value="4" class="option">Saidpur</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mt-md-4 mt-lg-0 text-center">
-                                            <div class="fly">
-                                                <h3>Select Date</h3>
-                                                <div class="dates d-flex justify-content-between align-items-center">
-                                                    <div
-                                                        class="date-inner d-flex justify-content-between align-items-center">
-                                                        <h6>Departure Date</h6>
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </div>
-                                                    <div
-                                                        class="date-inner d-flex justify-content-between align-items-center">
-                                                        <h6>Return Date</h6>
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </div>
-                                                </div>
-                                                <!-- <div id="color-calendar"></div> -->
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 mt-md-4 mt-lg-0">
-                                            <div class="fly">
-                                                <h3>Passenger & Cabin Class</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">1 Person</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">1 Person</li>
-                                                        <li data-value="2" class="option">1 Person</li>
-                                                        <li data-value="4" class="option">1 Person</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-multi" role="tabpanel" aria-labelledby="nav-multi-tab"
-                        tabindex="0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="option-panel">
-                                    <div class="row">
-                                        <div class="col-lg-2 col-md-6">
-                                            <div class="fly">
-                                                <h3>Flying From</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">Dhaka</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">Shylet</li>
-                                                        <li data-value="2" class="option">Chittagong</li>
-                                                        <li data-value="4" class="option">Saidpur</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6">
-                                            <div class="fly">
-                                                <h3>Flying To</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">Cox's Bazar</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">Shylet</li>
-                                                        <li data-value="2" class="option">Chittagong</li>
-                                                        <li data-value="4" class="option">Saidpur</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 mt-md-4 mt-lg-0 text-center">
-                                            <div class="fly">
-                                                <h3>Select Date</h3>
-                                                <div class="dates d-flex justify-content-between align-items-center">
-                                                    <div
-                                                        class="date-inner d-flex justify-content-between align-items-center">
-                                                        <h6>Departure Date</h6>
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </div>
-                                                    <div
-                                                        class="date-inner d-flex justify-content-between align-items-center">
-                                                        <h6>Return Date</h6>
-                                                        <i class="fa-solid fa-calendar-days"></i>
-                                                    </div>
-                                                </div>
-                                                <!-- <div id="color-calendar"></div> -->
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 mt-md-4 mt-lg-0">
-                                            <div class="fly">
-                                                <h3>Passenger & Cabin Class</h3>
-                                                <div class="nice-select">
-                                                    <span class="current">1 Person</span>
-                                                    <ul class="list">
-                                                        <li data-value="1" class="option">1 Person</li>
-                                                        <li data-value="2" class="option">1 Person</li>
-                                                        <li data-value="4" class="option">1 Person</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-3 text-center">
-                    <div class="ticktes-btn">
-                        <button>Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Ticektes selection area end -->
-
     <!-- Get Offer area start -->
 
-    <div class="get-offer" id="ticket-offer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="offer-heding">
-                        <h3>Get Offer</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3 offer-slider">
-                <div class="col-lg-4">
-                    <div class="offer-inner">
-                        <div class="offer-image">
-                            <img src="{{ asset('frontend/assets') }}/images/of01.png" alt="offer-image">
-                        </div>
-                        <div class="offer-text">
-                            <h4>Biman Bangladesh Airlines</h4>
-                            <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                <div class="offer-price">
-                                    <p>5000 BDT/Person</p>
-                                </div>
-                                <div class="offer-duration">
-                                    <p>2 Hour 35 min</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="offer-inner">
-                        <div class="offer-image">
-                            <img src="{{ asset('frontend/assets') }}/images/of02.png" alt="offer-image">
-                        </div>
-                        <div class="offer-text">
-                            <h4>Biman Bangladesh Airlines</h4>
-                            <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                <div class="offer-price">
-                                    <p>5000 BDT/Person</p>
-                                </div>
-                                <div class="offer-duration">
-                                    <p>2 Hour 35 min</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="offer-inner">
-                        <div class="offer-image">
-                            <img src="{{ asset('frontend/assets') }}/images/of03.png" alt="offer-image">
-                        </div>
-                        <div class="offer-text">
-                            <h4>Biman Bangladesh Airlines</h4>
-                            <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                <div class="offer-price">
-                                    <p>5000 BDT/Person</p>
-                                </div>
-                                <div class="offer-duration">
-                                    <p>2 Hour 35 min</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="offer-inner">
-                        <div class="offer-image">
-                            <img src="{{ asset('frontend/assets') }}/images/of01.png" alt="offer-image">
-                        </div>
-                        <div class="offer-text">
-                            <h4>Biman Bangladesh Airlines</h4>
-                            <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                <div class="offer-price">
-                                    <p>5000 BDT/Person</p>
-                                </div>
-                                <div class="offer-duration">
-                                    <p>2 Hour 35 min</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="offer-inner">
-                        <div class="offer-image">
-                            <img src="{{ asset('frontend/assets') }}/images/of02.png" alt="offer-image">
-                        </div>
-                        <div class="offer-text">
-                            <h4>Biman Bangladesh Airlines</h4>
-                            <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                <div class="offer-price">
-                                    <p>5000 BDT/Person</p>
-                                </div>
-                                <div class="offer-duration">
-                                    <p>2 Hour 35 min</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="offer-inner">
-                        <div class="offer-image">
-                            <img src="{{ asset('frontend/assets') }}/images/of03.png" alt="offer-image">
-                        </div>
-                        <div class="offer-text">
-                            <h4>Biman Bangladesh Airlines</h4>
-                            <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                <div class="offer-price">
-                                    <p>5000 BDT/Person</p>
-                                </div>
-                                <div class="offer-duration">
-                                    <p>2 Hour 35 min</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <livewire:frontend.ticket-section lazy="on-load"/>
 
     <!-- Get Offer area end -->
 
@@ -737,236 +373,7 @@
 
     <!-- Hotel area start -->
 
-    <div class="hotel-main" id="hotel">
-        <div class="container">
-            <div class="heading">
-                <div class="row justify-content-between align-items-end">
-                    <div class="col-6 col-lg-7 col-md-7">
-                        <div class="header-left-text">
-                            <h3>Hotel Booking</h3>
-                            {{-- <p>It all boils down to the fact that we understand the “flatness” of our phone screens.
-                                Faux 3d elements and real-world textures mentally
-                            </p> --}}
-                        </div>
-                    </div>
-                    <div class="col-4 col-lg-5 col-md-5 mt-lg-0 mt-md-0">
-                        <div class="row align-items-lg-center justify-content-end">
-                            <div class="col-lg-6">
-                                <div class="header-video section-video">
-                                    <img src="{{ asset('frontend/assets') }}/images/header-pic01.png" alt="header-pic">
-                                    <div class="play-btn">
-                                        <a class="my-video-links" data-autoplay="true" data-vbtype="video"
-                                            data-maxwidth="700px"
-                                            href="{{ settings('hotel_video_link') }}">
-                                            <i class="fa-solid fa-play"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="extra-btn">
-                                    <button class="my-video-links" data-autoplay="true" data-vbtype="video"
-                                    data-maxwidth="700px" href="{{ settings('hotel_video_link') }}">Know More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hotel-select">
-                <div class="row">
-                    <div class="col-lg-2 col-md-6 mb-md-3">
-                        <div class="fly">
-                            <h3>Where You Going?</h3>
-                            <div class="nice-select">
-                                <span class="current">Arab Amirates</span>
-                                <ul class="list">
-                                    <li data-value="1" class="option">Shylet</li>
-                                    <li data-value="2" class="option">Chittagong</li>
-                                    <li data-value="4" class="option">Saidpur</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-md-3 text-center">
-                        <div class="fly">
-                            <h3>Select Date</h3>
-                            <div class="dates d-flex justify-content-between align-items-center">
-                                <div class="date-inner d-flex justify-content-between align-items-center">
-                                    <h6>Check In Date</h6>
-                                    <i class="fa-solid fa-calendar-days"></i>
-                                </div>
-                                <div class="date-inner d-flex justify-content-between align-items-center">
-                                    <h6>Check Out Date</h6>
-                                    <i class="fa-solid fa-calendar-days"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-md-3">
-                        <div class="fly">
-                            <h3>People</h3>
-                            <div class="d-flex">
-                                <div class="nice-select">
-                                    <span class="current">1 Person</span>
-                                    <ul class="list">
-                                        <li data-value="1" class="option">Shylet</li>
-                                        <li data-value="2" class="option">Chittagong</li>
-                                        <li data-value="4" class="option">Saidpur</li>
-                                    </ul>
-                                </div>
-                                <div class="nice-select">
-                                    <span class="current">1 Child</span>
-                                    <ul class="list">
-                                        <li data-value="1" class="option">Shylet</li>
-                                        <li data-value="2" class="option">Chittagong</li>
-                                        <li data-value="4" class="option">Saidpur</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-6 mb-md-3">
-                        <div class="fly">
-                            <h3>Room</h3>
-                            <div class="nice-select">
-                                <span class="current">1 Room</span>
-                                <ul class="list">
-                                    <li data-value="1" class="option">Shylet</li>
-                                    <li data-value="2" class="option">Chittagong</li>
-                                    <li data-value="4" class="option">Saidpur</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 offset-md-5 col-lg-1 offset-lg-0">
-                        <div class="hotel-btn">
-                            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="get-offer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="offer-heding">
-                            <h3>Get Offer</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-3 offer-slider">
-                    <div class="col-lg-4">
-                        <div class="offer-inner">
-                            <div class="offer-image">
-                                <img src="{{ asset('frontend/assets') }}/images/of05.png" alt="offer-image">
-                            </div>
-                            <div class="offer-text">
-                                <h4>Sea Pearl Beach Resort & Spa Cox's Bazar</h4>
-                                <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                    <div class="offer-price">
-                                        <p>50000 BDT/Person</p>
-                                    </div>
-                                    <div class="offer-duration">
-                                        <p>Price includes VAT & Tax</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="offer-inner">
-                            <div class="offer-image">
-                                <img src="{{ asset('frontend/assets') }}/images/of06.png" alt="offer-image">
-                            </div>
-                            <div class="offer-text">
-                                <h4>Sea Pearl Beach Resort & Spa Cox's Bazar</h4>
-                                <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                    <div class="offer-price">
-                                        <p>50000 BDT/Person</p>
-                                    </div>
-                                    <div class="offer-duration">
-                                        <p>Price includes VAT & Tax</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="offer-inner">
-                            <div class="offer-image">
-                                <img src="{{ asset('frontend/assets') }}/images/of07.png" alt="offer-image">
-                            </div>
-                            <div class="offer-text">
-                                <h4>Sea Pearl Beach Resort & Spa Cox's Bazar</h4>
-                                <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                    <div class="offer-price">
-                                        <p>50000 BDT/Person</p>
-                                    </div>
-                                    <div class="offer-duration">
-                                        <p>Price includes VAT & Tax</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="offer-inner">
-                            <div class="offer-image">
-                                <img src="{{ asset('frontend/assets') }}/images/of05.png" alt="offer-image">
-                            </div>
-                            <div class="offer-text">
-                                <h4>Sea Pearl Beach Resort & Spa Cox's Bazar</h4>
-                                <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                    <div class="offer-price">
-                                        <p>50000 BDT/Person</p>
-                                    </div>
-                                    <div class="offer-duration">
-                                        <p>Price includes VAT & Tax</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="offer-inner">
-                            <div class="offer-image">
-                                <img src="{{ asset('frontend/assets') }}/images/of06.png" alt="offer-image">
-                            </div>
-                            <div class="offer-text">
-                                <h4>Sea Pearl Beach Resort & Spa Cox's Bazar</h4>
-                                <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                    <div class="offer-price">
-                                        <p>50000 BDT/Person</p>
-                                    </div>
-                                    <div class="offer-duration">
-                                        <p>Price includes VAT & Tax</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="offer-inner">
-                            <div class="offer-image">
-                                <img src="{{ asset('frontend/assets') }}/images/of07.png" alt="offer-image">
-                            </div>
-                            <div class="offer-text">
-                                <h4>Sea Pearl Beach Resort & Spa Cox's Bazar</h4>
-                                <div class="offer-text-down d-flex justify-content-between align-items-center">
-                                    <div class="offer-price">
-                                        <p>50000 BDT/Person</p>
-                                    </div>
-                                    <div class="offer-duration">
-                                        <p>Price includes VAT & Tax</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <livewire:frontend.hotel-booking-section lazy="on-load"/>
 
     <!-- Hotel area end -->
 
@@ -994,50 +401,6 @@
     <livewire:frontend.holiday-section lazy="on-load"/>
     <!-- Holiday area end -->
 
-    <!-- Visa Check area start -->
-
-    {{-- <div class="visa-check-main">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-lg-5 col-md-6">
-                    <div class="visa-check-left">
-                        <h6>Visa Check</h6>
-                        <h3>Check Your Visa Today With Passport Number</h3>
-                        <p>It all boils down to the fact that we understand the “flatness” of our phone screens. Faux 3d
-                            elements and real-world textures mentally down to the fact that we understand the “flatness”
-                            of our phone screens. Faux 3d elements down to the fact that we understand the “flatness” of
-                            our phone screens. Faux 3d elements</p>
-                        <div class="nice-select">
-                            <span class="current">Select Country</span>
-                            <ul class="list">
-                                <li data-value="1" class="option">Bangladesh</li>
-                                <li data-value="2" class="option">India</li>
-                                <li data-value="4" class="option">Sudia Arab</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 mt-4 mt-lg-0">
-                    <div class="extra-btn">
-                        <button>Know More Service</button>
-                    </div>
-                    <div class="header-video">
-                        <img src="{{ asset('frontend/assets') }}/images/visa.png" alt="header-pic">
-                        <div class="play-btn">
-                            <a class="my-video-links" data-autoplay="true" data-vbtype="video" data-maxwidth="700px"
-                                href="https://youtu.be/Dex0hq46MwI?si=ueClauoB1t4fyhzN">
-                                <i class="fa-solid fa-play">
-                                </i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-    <!-- Visa Check area end -->
-
     <!-- CV area start -->
 
     <div class="cv-main">
@@ -1052,20 +415,18 @@
             <div class="row mt-0 mt-lg-4 justify-content-between align-items-center">
                 <div class="col-lg-6">
                     <div class="cv-left">
-                        <img src="{{ asset('frontend/assets') }}/images/cv.png" alt="cv">
+                        <img src="{{ asset(settings('cv_preview_image')) }}" alt="cv">
                     </div>
                 </div>
                 <div class="col-lg-6 col-xl-5">
                     <div class="cv-right">
-                        <h3>Grab Your Opportunity With Perfect CV</h3>
+                        <h3>{{ settings('cv_title') }}</h3>
                         <p>
-                            When the first iPhone launched, the idea of interacting with a small device using multi-touch
-                            gestures was quite new. To make people more comfortable with the interface, the initial
-                            designs used Skeuomorphism for the UI.
+                            {{ settings('cv_description') }}
                         </p>
                         <div class="buttons">
-                            <button onclick="location.href='{{ route('cv.builder') }}'">Create CV</button>
-                            {{-- <button>Order for Special CV</button> --}}
+                            <button onclick="location.href='{{ settings('cv_btn_one_url') }}'">{{ settings('cv_btn_one_title') }}</button>
+                            <button onclick="location.href='{{ settings('cv_btn_two_url') }}'">{{ settings('cv_btn_two_title') }}</button>
                         </div>
                     </div>
                 </div>

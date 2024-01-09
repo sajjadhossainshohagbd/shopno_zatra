@@ -31,7 +31,7 @@
                                     </td>
                                     <td>{{ $work->name }}</td>
                                     <td>
-                                        @if(auth()->user()->role == 'agent')
+                                        @if(auth()->user()?->role == 'agent')
                                         <del><span><b>Original Price</b> : {{ $work->price }} BDT</span></del> <br>
                                         <span><b>B2B Price</b> : {{ $work->b2b_price }} BDT</span> <br>
                                         @else

@@ -9,7 +9,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 
 #[Layout('frontend.layouts.app')]
-class Details extends Component
+class Details extends Component 
 {
     #[Locked]
     public $pack;

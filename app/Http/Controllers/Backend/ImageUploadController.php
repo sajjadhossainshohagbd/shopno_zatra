@@ -13,17 +13,17 @@ class ImageUploadController extends Controller
     public function __invoke(Request $request)
     {
         $request->validate([
-            'upload' => 'required|mimes:jpg,jpeg,png'
+            'file' => 'required|mimes:jpg,jpeg,png'
         ]);
 
-        $fileName = $request->file('upload')->store('uploads/text-editor','public');
+        $fileName = $request->file('file')->store('uploads/text-editor','public');
 
         $url = asset($fileName);
 
         return response()->json([
             'fileName' => $fileName,
             'uploaded'=> 1,
-            'url' => $url
+            'location' => $url
         ]);
 
     }

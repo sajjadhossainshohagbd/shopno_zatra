@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="row">
-                <h5>Pack Request</h5>
+                <h5>Package Request</h5>
                 <div class="mt-4 col-6">
                     <select wire:change='setRequestCountry($event.target.value)' class="form-select custom-select">
                         <option value="" selected>Select Country</option>
@@ -38,12 +38,12 @@
                         @endforeach
                     </select>
                     @if($request_country)
-                    <a href="{{ route('holiday.pack.request',encrypt($request_country)) }}" class="m-2 btn btn-success text-white"><h6>Pack Request, Click here.</h6></a>
+                    <a href="{{ route('holiday.pack.request',encrypt($request_country)) }}" class="m-2 btn btn-success text-white"><h6>Package Request, Click here.</h6></a>
                     @endif
                 </div>
                 <div class="mt-4 col-6">
                     <select wire:change='setService($event.target.value)' class="form-select custom-select">
-                        <option value="" selected>Holiday Pack Related Service</option>
+                        <option value="" selected>Holiday Package Related Service</option>
                         @foreach ($services as $service)
                         <option value="{{ $service->id }}">{{ $service->name }}</option>
                         @endforeach

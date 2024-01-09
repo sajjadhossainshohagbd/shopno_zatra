@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                    <h4 class="mb-0">Dashboard</h4>
+                    <h5 class="mb-0">Dashboard</h5>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
@@ -16,41 +16,88 @@
                 </div>
             </div>
         </div>
-        {{-- <h2 class="text-center">Income</h2>
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Today</h4>
-                        <h6>BDT 250</h6>
+                        <h5>Total Courses</h5>
+                        <h6>{{ $course_count }}</h6>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Tomorrow</h4>
-                        <h6>BDT 2500</h6>
+                        <h5>Total Hajj-Umrah Visa</h5>
+                        <h6>{{ $hajj_count }}</h6>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Last 7 Days</h4>
-                        <h6>BDT 250</h6>
+                        <h5>Total Work Visa</h5>
+                        <h6>{{ $work_visa_count }}</h6>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Last 30 Days</h4>
-                        <h6>10</h6>
+                        <h5>Total Tourist Visa</h5>
+                        <h6>{{ $tourist_visa_count }}</h6>
                     </div>
                 </div>
             </div>
-        </div> --}}
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Total Education Visa</h5>
+                        <h6>{{ $education_visa_count }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Total Medical Visa</h5>
+                        <h6>{{ $education_visa_count }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Total Holiday Package</h5>
+                        <h6>{{ $holilday_pack_count }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Total Ticket Offers</h5>
+                        <h6>{{ $ticket_count }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Total Hotel Offers</h5>
+                        <h6>{{ $hotel_count }}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Total News Posts</h5>
+                        <h6>{{ $posts_count }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

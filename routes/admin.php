@@ -76,6 +76,24 @@ Route::prefix('services')->name('services.')->group(function(){
     Route::get('order-details/{id}',App\Livewire\Backend\Service\OrderDetails::class)->name('order.details');
 });
 
+// Ticket
+Route::prefix('ticket')->name('ticket.')->group(function(){
+    Route::get('/',App\Livewire\Backend\Ticket\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\Ticket\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\Ticket\Edit::class)->name('edit');
+    Route::get('orders',App\Livewire\Backend\Ticket\Order::class)->name('orders');
+    Route::get('order-details/{id}',App\Livewire\Backend\Ticket\OrderDetails::class)->name('order.details');
+});
+
+// Hotel
+Route::prefix('hotel')->name('hotel.')->group(function(){
+    Route::get('/',App\Livewire\Backend\Hotel\Index::class)->name('index');
+    Route::get('/add',App\Livewire\Backend\Hotel\Add::class)->name('add');
+    Route::get('/edit/{id}',App\Livewire\Backend\Hotel\Edit::class)->name('edit');
+    Route::get('orders',App\Livewire\Backend\Hotel\Order::class)->name('orders');
+    Route::get('order-details/{id}',App\Livewire\Backend\Hotel\OrderDetails::class)->name('order.details');
+});
+
 // Work Visa
 Route::prefix('work-visa')->name('work.visa.')->group(function(){
     Route::get('/',App\Livewire\Backend\WorkVisa\Index::class)->name('index');
@@ -129,6 +147,12 @@ Route::prefix('tourist')->name('tourist.')->group(function(){
     Route::get('order-details/{id}',App\Livewire\Backend\Tourist\OrderDetails::class)->name('order.details');
     Route::get('request-history',App\Livewire\Backend\Tourist\RequestHistory::class)->name('request.history');
     Route::get('request-details/{id}',App\Livewire\Backend\Tourist\RequestDetails::class)->name('request.details');
+});
+
+// Special CV
+Route::prefix('special-cv')->name('special.cv.')->group(function(){
+    Route::get('orders',App\Livewire\Backend\SpecialCv\Order::class)->name('orders');
+    Route::get('order-details/{id}',App\Livewire\Backend\SpecialCv\OrderDetails::class)->name('order.details');
 });
 
 // Agent
@@ -211,6 +235,7 @@ Route::prefix('pages')->name('page.')->group(function(){
     Route::get('/',App\Livewire\Backend\Page\Index::class)->name('index');
     Route::get('/add',App\Livewire\Backend\Page\Add::class)->name('add');
     Route::get('/edit/{id}',App\Livewire\Backend\Page\Edit::class)->name('edit');
+    Route::get('/contact-us',App\Livewire\Backend\Page\ContactUs::class)->name('contact.us');
 });
 // Offices
 Route::prefix('offices')->name('office.')->group(function(){
@@ -220,6 +245,15 @@ Route::prefix('offices')->name('office.')->group(function(){
 });
 
 // Settings
-Route::get('/settings',App\Livewire\Backend\Settings\Index::class)->name('settings');
+Route::prefix('settings')->group(function(){
+    Route::get('/site-settings',App\Livewire\Backend\Settings\SiteSettings::class)->name('site.settings');
+    Route::get('/services',App\Livewire\Backend\Settings\Services::class)->name('settings.services');
+    Route::get('/offers',App\Livewire\Backend\Settings\Offers::class)->name('settings.offers');
+    Route::get('/payment-section',App\Livewire\Backend\Settings\PaymentSection::class)->name('settings.payment.section');
+    Route::get('/section-wise-video',App\Livewire\Backend\Settings\SectionWiseVideo::class)->name('settings.section.wise.video');
+    Route::get('/cv-section',App\Livewire\Backend\Settings\CV::class)->name('settings.cv');
+    Route::get('/footer',App\Livewire\Backend\Settings\Footer::class)->name('settings.footer');
+});
+// Settings store
 Route::post('/setting-store',App\Http\Controllers\Backend\SettingsController::class)->name('settings.store');
 

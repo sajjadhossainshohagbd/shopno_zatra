@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {{ $title ?? 'Home' }} | {{ config('app.name') }}</title>
+    <link rel="shortcut icon" href="{{ asset(settings('site_favicon')) }}" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/assets/css/nice-select.css">
@@ -88,11 +89,7 @@
 
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            @auth
-                            <a href="{{ route('user.my.profile') }}" class="accordion-button single-link collapsed" style=".accordion-button::after {}">Inbox</a>
-                            @else
-                            <a href="{{ route('login') }}" class="accordion-button single-link collapsed">Inbox</a>
-                            @endauth
+                            <a href="{{ route('notifications') }}" class="accordion-button single-link collapsed">Inbox</a>
                         </h2>
                     </div>
                     <div class="accordion-item">
@@ -102,7 +99,7 @@
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <a href="#" class="accordion-button single-link collapsed">News Media</a>
+                            <a href="{{ route('news.media') }}" class="accordion-button single-link collapsed">News Media</a>
                         </h2>
                     </div>
                     <div class="accordion-item">

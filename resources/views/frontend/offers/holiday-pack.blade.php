@@ -5,7 +5,7 @@
                 <div class="card shadow">
                     <div class="card-header">
                         <div class="card-title">
-                            <h2>Holiday Pack Offers</h2>
+                            <h2>Holiday Package Offers</h2>
                         </div>
                     </div>
                     <div class="card-body">

@@ -19,6 +19,8 @@ Route::get('migrate',function(){
 });
 
 Route::get('/',App\Livewire\Frontend\Index::class)->name('home');
+Route::get('/offers/ticket',App\Livewire\Frontend\Offers\Ticket::class)->name('ticket.offers');
+Route::get('/offers/hotel',App\Livewire\Frontend\Offers\Hotel::class)->name('hotel.offers');
 Route::get('/offers/tourist',App\Livewire\Frontend\Offers\Tourist::class)->name('tourist.offers');
 Route::get('/offers/hajj',App\Livewire\Frontend\Offers\Hajj::class)->name('hajj.offers');
 Route::get('/offers/work',App\Livewire\Frontend\Offers\WorkVisa::class)->name('work.visa.offers');
@@ -35,6 +37,14 @@ Route::get('/contact-us',App\Livewire\Frontend\ContactUs::class)->name('contact.
 
 // Profile
 Route::get('/profile',App\Livewire\Backend\Profile::class)->name('profile')->middleware('auth');
+
+// Ticket details & order
+Route::get('/ticket-details/{id}',App\Livewire\Frontend\Ticket\Details::class)->name('ticket.details');
+Route::get('/ticket-order/{id}',App\Livewire\Frontend\Ticket\Order::class)->name('ticket.order');
+
+// Hotel details & order
+Route::get('/hotel-details/{id}',App\Livewire\Frontend\Hotel\Details::class)->name('hotel.details');
+Route::get('/hotel-order/{id}',App\Livewire\Frontend\Hotel\Order::class)->name('hotel.order');
 
 // Tourist Package & Order
 Route::get('/tourist-request/{country}',App\Livewire\Frontend\Tourist\VisaRequest::class)->name('tourist.visa.request');
@@ -66,11 +76,13 @@ Route::get('/holiday-details/{id}',App\Livewire\Frontend\Holiday\Details::class)
 Route::get('/holiday-order/{id}',App\Livewire\Frontend\Holiday\Order::class)->name('holiday.order');
 
 // Service Details
-Route::get('services/{type}',App\Livewire\Frontend\Service\Index::class)->name('services.details');
+Route::get('services/{type}',App\Livewire\Frontend\Service\Index::class)->name('services');
 Route::get('services-details/{id}',App\Livewire\Frontend\Service\Details::class)->name('services.details');
 Route::get('service-order/{id}',App\Livewire\Frontend\Service\Order::class)->name('service.order');
 
 // CV Builder
+Route::get('/special-cv',[App\Http\Controllers\Frontend\CVBuilderController::class,'specialCv'])->name('special.cv');
+Route::post('/special-cv-order',[App\Http\Controllers\Frontend\CVBuilderController::class,'specialCvOrder'])->name('special.cv.order');
 Route::get('/cv-builder',[App\Http\Controllers\Frontend\CVBuilderController::class,'index'])->name('cv.builder');
 Route::post('/preview-cv',[App\Http\Controllers\Frontend\CVBuilderController::class,'preview'])->name('preview.cv');
 

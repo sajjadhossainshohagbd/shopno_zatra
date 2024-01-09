@@ -12,6 +12,8 @@ use App\Models\HajjService;
 use App\Models\MedicalVisa;
 use App\Models\VideoSection;
 use App\Models\EducationVisa;
+use App\Models\Hotel;
+use App\Models\Ticket;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Illuminate\Support\Benchmark;
@@ -27,6 +29,7 @@ class Index extends Component
 
         $services = Service::select('type')->groupBy('type')->get()->map(function ($item) {
             $typeData = Service::where('type', $item->type)->get();
+            
             return [
                 'type' => $item->type,
                 'services' => $typeData->toArray(),
@@ -34,6 +37,8 @@ class Index extends Component
         });
 
         $offer_count = array_sum([
+            Ticket::count(),
+            Hotel::count(),
             Tourist::count(),
             Hajj::count(),
             WorkVisa::count(),

@@ -14,6 +14,7 @@ class SettingsController extends Controller
      */
     public function __invoke(Request $request)
     {
+        // dd($request->all());
         foreach ($request->settings as $key => $type) {
             $settings = Settings::firstOrCreate([
                 'key' => $type
@@ -23,10 +24,10 @@ class SettingsController extends Controller
                 $settings->value = json_encode($request[$type]);
             }elseif($request->hasFile($type)){
                 if(is_array($request->file($type))){
-                    $values = [];
+                    $values = is_array(json_decode(settings($type))) ? json_decode(settings($type)) : [];
 
-                    foreach($request->file($type) as $file){
-                        $values[] = $file->store('uploads/site_settings','public');
+                    foreach($request->file($type) as $key => $file){
+                        $values[$key] = $file->store('uploads/site_settings','public');
                     }
                     $settings->value = json_encode($values);
                 }else{

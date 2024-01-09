@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="row">
-                <h5>Visa Request</h5>
+                <h5>Admission Request</h5>
                 <div class="mt-4 col-6">
                     <select wire:change='setRequestCountry($event.target.value)' class="form-select custom-select">
                         <option value="" selected>Select Country</option>
@@ -38,7 +38,7 @@
                         @endforeach
                     </select>
                     @if($request_country)
-                    <a href="{{ route('education.visa.job.request',encrypt($request_country)) }}" class="m-2 btn btn-success text-white"><h6>Visa Request, Click here.</h6></a>
+                    <a href="{{ route('education.visa.job.request',encrypt($request_country)) }}" class="m-2 btn btn-success text-white"><h6>Admission Request, Click here.</h6></a>
                     @endif
                 </div>
                 <div class="mt-4 col-6">

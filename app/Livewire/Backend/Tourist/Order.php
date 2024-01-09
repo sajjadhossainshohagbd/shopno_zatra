@@ -6,7 +6,7 @@ use App\Models\TouristOrder;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 
-class Order extends Component
+class Order extends Component 
 {
     public function delete($id)
     {

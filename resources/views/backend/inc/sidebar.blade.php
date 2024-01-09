@@ -73,6 +73,28 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-clone"></i>
+                        <span>Ticket Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('ticket.index') }}">Ticket List</a></li>
+                        <li><a href="{{ route('ticket.orders') }}">Orders</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-hotel"></i>
+                        <span>Hotel Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('hotel.index') }}">Hotel List</a></li>
+                        <li><a href="{{ route('hotel.orders') }}">Orders</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fa fa-passport"></i>
                         <span>Hajj Management</span>
                     </a>
@@ -151,6 +173,16 @@
                         <li><a href="{{ route('holiday.orders') }}">Orders</a></li>
                         <li><a href="{{ route('services.orders','holiday_package') }}">Service Orders</a></li>
                         <li><a href="{{ route('holiday.request.history') }}">Request History</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-address-card"></i>
+                        <span>CV Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('special.cv.orders') }}">Orders</a></li>
                     </ul>
                 </li>
 
@@ -278,6 +310,7 @@
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{ route('page.index') }}">Page List</a></li>
                         <li><a href="{{ route('page.add') }}">Add New Page</a></li>
+                        <li><a href="{{ route('page.contact.us') }}">Contact Us</a></li>
                     </ul>
                 </li>
                 <li>
@@ -288,11 +321,21 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('settings') }}">
-                        <i class="uil-cog"></i>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="fa fa-file"></i>
                         <span>Settings</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{ route('site.settings') }}">Site Settings</a></li>
+                        <li><a href="{{ route('settings.services') }}">Services</a></li>
+                        <li><a href="{{ route('settings.offers') }}">Offers</a></li>
+                        <li><a href="{{ route('settings.payment.section') }}">Payment Section</a></li>
+                        <li><a href="{{ route('settings.section.wise.video') }}">Section Wise Video</a></li>
+                        <li><a href="{{ route('settings.cv') }}">CV Section</a></li>
+                        <li><a href="{{ route('settings.footer') }}">Footer</a></li>
+                    </ul>
                 </li>
+
             </ul>
         </div>
         <!-- Sidebar -->

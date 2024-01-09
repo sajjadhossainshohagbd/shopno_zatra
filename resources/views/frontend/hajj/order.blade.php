@@ -31,7 +31,7 @@
                                     </td>
                                     <td>{{ $hajj->package_name }}</td>
                                     <td>
-                                        @if(auth()->user()->role == 'agent')
+                                        @if(auth()->user()?->role == 'agent')
                                         <del><span><b>Original Price</b> : {{ $hajj->start_from }} BDT</span></del> <br>
                                         <span><b>B2B Price</b> : {{ $hajj->b2b_price }} BDT</span> <br>
                                         @else

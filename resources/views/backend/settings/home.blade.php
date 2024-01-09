@@ -13,79 +13,6 @@
             @endif
         </div>
 
-        <h4 class="pt-3">Services</h4>
-        <input type="hidden" name="settings[]" value="header_services_title">
-        <input type="hidden" name="settings[]" value="header_services_logo">
-        <input type="hidden" name="settings[]" value="header_services_url">
-        @php
-            $titles = is_array(json_decode(settings('header_services_title'))) ? json_decode(settings('header_services_title')) : [];
-            $icons = @json_decode(settings('header_services_logo'));
-            $url = @json_decode(settings('header_services_url'));
-        @endphp
-        <div class="add-service">
-            @foreach ($titles as $key => $title)
-            <div class="row">
-                <div class="col-3">
-                    <label class="form-label"> Name</label>
-                    <div class="input-group">
-                        <input id="header_services_title" name="header_services_title[]" class="form-control"
-                            type="text" placeholder="Title" autocomplete="off" value="{{ $title }}">
-                    </div>
-                </div>
-                <div class="col-3">
-                    <label class="form-label"> Icon</label>
-                    <div class="input-group">
-                        <input id="header_services_logo" name="header_services_logo[]" class="form-control"
-                            type="file">
-                    </div>
-                </div>
-                <div class="col-3">
-                    <label class="form-label">URL</label>
-                    <div class="input-group">
-                        <input id="header_services_url" name="header_services_url[]" class="form-control"
-                            type="text" placeholder="Link" autocomplete="off" value="{{ @$url[$key] }}">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <label class="form-label">Remove</label> <br>
-                    <button type="button" data-toggle="remove-parent" data-parent=".row" class="btn btn-danger"><i class="fa fa-times"></i></button>
-                </div>
-            </div>
-            @endforeach
-
-        </div>
-        <div class="input-group mt-2">
-            <button type="button" data-toggle="add-more" data-content='
-            <div class="row">
-                <div class="col-3">
-                    <label class="form-label"> Name</label>
-                    <div class="input-group">
-                        <input id="header_services_title" name="header_services_title[]" class="form-control"
-                            type="text" placeholder="Name" autocomplete="off">
-                    </div>
-                </div>
-                <div class="col-3">
-                    <label class="form-label"> Icon</label>
-                    <div class="input-group">
-                        <input id="header_services_logo" name="header_services_logo[]" class="form-control"
-                            type="file">
-                    </div>
-                </div>
-                <div class="col-3">
-                    <label class="form-label">URL</label>
-                    <div class="input-group">
-                        <input id="header_services_url" name="header_services_url[]" class="form-control"
-                            type="text" placeholder="Link" autocomplete="off">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <label class="form-label">Remove</label> <br>
-                    <button type="button" data-toggle="remove-parent" data-parent=".row" class="btn btn-danger"><i class="fa fa-times"></i></button>
-                </div>
-            </div>
-            ' class="btn btn-success" data-target=".add-service"><i class="fa fa-plus"></i> Add More</button>
-        </div>
-
         <h4 class="pt-3">Offers</h4>
         <input type="hidden" name="settings[]" value="header_offers_title">
         <input type="hidden" name="settings[]" value="header_offers_logo">
@@ -216,51 +143,6 @@
             ' class="btn btn-success" data-target=".add-payment-btn"><i class="fa fa-plus"></i> Add More</button>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label>Facebook Link</label>
-                    <input type="hidden" name="settings[]" value="fb_link">
-                    <input type="text" class="form-control" name="fb_link" value="{{ settings('fb_link') }}">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label>YouTube Link</label>
-                    <input type="hidden" name="settings[]" value="youtube_link">
-                    <input type="text" class="form-control" name="youtube_link" value="{{ settings('youtube_link') }}">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label>Instagram Link</label>
-                    <input type="hidden" name="settings[]" value="instagram_link">
-                    <input type="text" class="form-control" name="instagram_link" value="{{ settings('instagram_link') }}">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label>Twitter Link</label>
-                    <input type="hidden" name="settings[]" value="twitter_link">
-                    <input type="text" class="form-control" name="twitter_link" value="{{ settings('twitter_link') }}">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label>Twitter Link</label>
-                    <input type="hidden" name="settings[]" value="twitter_link">
-                    <input type="text" class="form-control" name="twitter_link" value="{{ settings('twitter_link') }}">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label>Whatsapp Number</label>
-                    <input type="hidden" name="settings[]" value="whatsapp_link">
-                    <input type="text" class="form-control" name="whatsapp_link" value="{{ settings('whatsapp_link') }}">
-                </div>
-            </div>
-        </div>
-
         <h4 class="text-center">Section Wise Video Link</h4>
         <div class="accordion" id="sectionAccordion">
             <div class="accordion-item">
@@ -366,16 +248,7 @@
             <input type="hidden" name="settings[]" value="footer_description">
             <textarea name="footer_description" class="form-control" rows="3">{{ settings('footer_description') }}</textarea>
         </div>
-        <div class="mb-2">
-            <label>Phone</label>
-            <input type="hidden" name="settings[]" value="footer_phone">
-            <input type="text" name="footer_phone" class="form-control" value="{{ settings('footer_phone') }}">
-        </div>
-        <div class="mb-2">
-            <label>Email </label>
-            <input type="hidden" name="settings[]" value="footer_email">
-            <input type="email" name="footer_email" class="form-control" value="{{ settings('footer_email') }}">
-        </div>
+
         <div class="row">
             <div class="col-4">
                 <label class="form-label">Widget One Title</label>
